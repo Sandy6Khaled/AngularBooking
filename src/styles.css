@@ -110,11 +110,11 @@
     max-height: 45px;
 }
 
+.sticky-top.navbar-light {
+    position: relative;
+    background: #FFFFFF;
+}
 @media (max-width: 991.98px) {
-    .sticky-top.navbar-light {
-        position: relative;
-        background: #FFFFFF;
-    }
 
     .navbar-light .navbar-collapse {
         margin-top: 15px;
