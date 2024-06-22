@@ -1,0 +1,23 @@
+/* Adjustments specific to the Owl Carousel */
+.testimonial-carousel .owl-dots {
+  margin-top: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid green; /* Change border color as needed */
+  border-radius: 15px;
+  transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+  background: var(--primary); /* Change active state background color */
+  border-color: green; /* Change active state border color */
+}

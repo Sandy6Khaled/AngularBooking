@@ -366,7 +366,8 @@
     margin: 0 5px;
     width: 15px;
     height: 15px;
-    border: 1px solid #CCCCCC;
+   
+    border: 1px solid #CCCCCC !important;
     border-radius: 15px;
     transition: .5s;
 }
@@ -375,7 +376,6 @@
     background: var(--primary);
     border-color: var(--primary);
 }
-
 
 /*** Footer ***/
 .footer .btn.btn-social {

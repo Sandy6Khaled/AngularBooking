@@ -4,6 +4,7 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { RegisterComponent } from './Components/register/register.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,7 +12,7 @@ import { RegisterComponent } from './Components/register/register.component';
     RouterOutlet,
     HomeComponent,
     NavBarComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

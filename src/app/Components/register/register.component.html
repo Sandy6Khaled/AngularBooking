@@ -1,217 +1,123 @@
-<!-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<div id="booking" class="section">
+  <div class="section-center">
     <div class="container">
+      <div class="row">
+       <!-- <div class="col-md-7 col-md-push-5">
+          <div class="booking-cta">
+            <h1>Make your reservation</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
+              ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
+              Perspiciatis.
+            </p>
+          </div>
+        </div>-->
+        <div class="col-md-12 col-md-pull-7">
+          <div class="booking-form">
+            <form>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">First Name</span>
+                   <input class="form-control" type="text" placeholder="Enter Your First Name">    
+                  </div>
+                </div>
 
-        <form class="row g-3 m-auto mt-5">
-            <div class="col-md-4">
-                <label for="validationServer01" class="form-label">First name</label>
-                <input type="text" class="form-control is-valid" id="validationServer01" value="" required placeholder="First Name">
-                <div class="valid-feedback">
-                    Looks good!
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">Last Name</span>
+                   <input class="form-control" type="text" placeholder="Enter Your Last Name">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <label for="validationServer02" class="form-label">Last name</label>
-                <input type="text" class="form-control is-valid" id="validationServer02" value="" required placeholder="Last Name">
-                <div class="valid-feedback">
-                    Looks good!
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">User Name</span>
+                   <input class="form-control" type="text" placeholder="Enter Your User Name">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <label for="validationServer02" class="form-label">Email</label>
-                <input type="text" class="form-control is-valid" id="validationServer02" value="" required placeholder="Email">
-                <div class="valid-feedback">
-                    Looks good!
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">Email</span>
+                   <input class="form-control" type="email" placeholder="Enter Your Email">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <label for="validationServerUsername" class="form-label">Email</label>
-                <div class="input-group has-validation">
-                    <span class="input-group-text" id="inputGroupPrepend3">&#64;</span>
-                    <input type="text" class="form-control is-invalid" id="validationServerUsername"
-                        aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        Please choose a username.
-                    </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">Password</span>
+                   <input class="form-control" type="password" placeholder="Enter Your Password">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <label for="validationServerUsername" class="form-label">Password</label>
-                <div class="input-group has-validation">
-                    
-                    <input type="password" class="form-control is-invalid" id="validationServerUsername"
-                        aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        Please choose a username.
-                    </div>
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">Confirm Password</span>
+                   <input class="form-control" type="password" placeholder="Confirm Your Password">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <label for="validationServerUsername" class="form-label">Confirm Password</label>
-                <div class="input-group has-validation">
-                    <input type="text" class="form-control is-invalid" id="validationServerUsername"
-                        aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        Please choose a username.
-                    </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">Phone Number</span>
+                   <input class="form-control" type="text" placeholder="Enter Your Phone Number">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <label for="validationServer03" class="form-label">City</label>
-                <input type="text" class="form-control is-invalid" id="validationServer03"
-                    aria-describedby="validationServer03Feedback" required>
-                <div id="validationServer03Feedback" class="invalid-feedback">
-                    Please provide a valid city.
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">City</span>
+                   <input class="form-control" type="text" placeholder="Enter Your City">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <label for="validationServer04" class="form-label">State</label>
-                <select class="form-select is-invalid" id="validationServer04"
-                    aria-describedby="validationServer04Feedback" required>
-                    <option selected disabled value="">Choose...</option>
-                    <option>...</option>
-                </select>
-                <div id="validationServer04Feedback" class="invalid-feedback">
-                    Please select a valid state.
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">Street</span>
+                   <input class="form-control" type="text" placeholder="Enter Your Street">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <label for="validationServer05" class="form-label">Zip</label>
-                <input type="text" class="form-control is-invalid" id="validationServer05"
-                    aria-describedby="validationServer05Feedback" required>
-                <div id="validationServer05Feedback" class="invalid-feedback">
-                    Please provide a valid zip.
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <span class="form-label">Postal Code</span>
+                   <input class="form-control" type="number" placeholder="Enter Your Postal Code">    
+                  </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3"
-                        aria-describedby="invalidCheck3Feedback" required>
-                    <label class="form-check-label" for="invalidCheck3">
-                        Agree to terms and conditions
-                    </label>
-                    <div id="invalidCheck3Feedback" class="invalid-feedback">
-                        You must agree before submitting.
-                    </div>
+              </div>
+
+
+              <div class="row">
+                <div class="">
+                  <button class="submit-btn col-sm-12">Register</button>
                 </div>
-            </div>
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </div>
-        </form>
-    </div>
-</div> -->
-<div class="container-xxl py-5 wow fadeInUp mt-5" data-wow-delay="0.1s">
-    <div class="container">
-<form class="row g-3">
-    <div class="col-md-4">
-      <label for="validationDefault01" class="form-label">First name</label>
-      <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-    </div>
-    <div class="col-md-4">
-      <label for="validationDefault02" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-    <div class="col-md-4">
-      <label for="validationDefaultUsername" class="form-label">Username</label>
-      <div class="input-group">
-        <span class="input-group-text" id="inputGroupPrepend2">&#64;</span>
-        <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+              </div>
+
+              <div class="row having-account">
+                <div class="col-sm-12">
+                <span>Have an account ? </span><a routerLink="../login">Login</a>
+              </div>
+              </div>
+
+
+             
+
+
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <label for="validationDefault03" class="form-label">City</label>
-      <input type="text" class="form-control" id="validationDefault03" required>
-    </div>
-    <div class="col-md-3">
-      <label for="validationDefault04" class="form-label">State</label>
-      <select class="form-select" id="validationDefault04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-3">
-      <label for="validationDefault05" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="validationDefault05" required>
-    </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-        <label class="form-check-label" for="invalidCheck2">
-          Agree to terms and conditions
-        </label>
-      </div>
-    </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
-    </div>
-  </form>
-    </div>
+  </div>
 </div>
-<!-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container">
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3 needs-validation" novalidate>
-    <div class="col-md-4">
-      <label for="firstName" class="form-label">First name</label>
-      <input type="text" formControlName="firstName" class="form-control" id="firstName"  required>
-      <div class="invalid-feedback">
-        First name is required.
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="lastName" class="form-label">Last name</label>
-      <input type="text" formControlName="lastName" class="form-control" id="lastName"  required>
-      <div class="invalid-feedback">
-        Last name is required.
-      </div>
-    </div>
-    <div class="col-md-4">
-      <label for="username" class="form-label">Username</label>
-      <div class="input-group">
-        <span class="input-group-text" id="inputGroupPrepend2">&#64;</span>
-        <input type="text" formControlName="username" class="form-control" id="username" required>
-        <div class="invalid-feedback">
-          Username is required.
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label for="city" class="form-label">City</label>
-      <input type="text" formControlName="city" class="form-control" id="city"  required>
-      <div class="invalid-feedback">
-        City is required.
-      </div>
-    </div>
-    <div class="col-md-3">
-      <label for="state" class="form-label">State</label>
-      <select formControlName="state" class="form-select" id="state"  required>
-        <option value="" disabled selected>Choose...</option>
-        <option *ngFor="let state of states" [value]="state">{{ state }}</option>
-      </select>
-      <div class="invalid-feedback">
-        State is required.
-      </div>
-    </div>
-    <div class="col-md-3">
-      <label for="zip" class="form-label">Zip</label>
-      <input type="text" formControlName="zip" class="form-control" id="zip"  required>
-      <div class="invalid-feedback">
-        Zip is required.
-      </div>
-    </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input formControlName="agree" class="form-check-input" type="checkbox" id="agree" required>
-        <label class="form-check-label" for="agree">
-          Agree to terms and conditions
-        </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
-        </div>
-      </div>
-    </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
-    </div>
-  </form>
-    </div>
-</div> -->
