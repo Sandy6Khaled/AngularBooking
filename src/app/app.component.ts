@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { RegisterComponent } from './Components/register/register.component';
+import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { RegisterComponent } from './Components/register/register.component';
     HomeComponent,
     NavBarComponent,
     RegisterComponent,
+    AdminDashboardComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

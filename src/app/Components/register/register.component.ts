@@ -14,11 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AccountService } from '../../Services/account.service';
 import { data } from 'jquery';
 import { RegisterUser } from '../../Models/RegisterUser';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [LoginComponent, RouterModule, HttpClientModule,FormsModule,ReactiveFormsModule],
+  imports: [LoginComponent, RouterModule, HttpClientModule,FormsModule,ReactiveFormsModule,CommonModule],
   providers: [AccountService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',

@@ -12,6 +12,7 @@ import { ProcessComponent } from '../process/process.component';
 import { TeamComponent } from '../team/team.component';
 import { TestimonialComponent } from '../testimonial/testimonial.component';
 import { FooterComponent } from '../footer/footer.component';
+import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ import { FooterComponent } from '../footer/footer.component';
     ProcessComponent,
     TeamComponent,
     TestimonialComponent,
-    FooterComponent
+    FooterComponent,
+    AdminDashboardComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
