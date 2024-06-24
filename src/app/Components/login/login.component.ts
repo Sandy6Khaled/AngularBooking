@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../Services/authentication.service';
 import { LoginUser } from '../../Models/LoginUser';
 import { LoginResponse, isLoginResponse } from '../../Models/LoginResponse';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule, 
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChangePasswordComponent
   ],
   providers: [AuthenticationService],
   templateUrl: './login.component.html',
@@ -52,7 +54,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error("Error", err);
-        this.errorMessage = 'Registration failed. Please try again.';
+        this.errorMessage = 'Invalid email or password';
       },
     });
   }

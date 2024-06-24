@@ -109,24 +109,6 @@ export class RegisterComponent {
 
   constructor(public myService: AccountService, public router:Router) { }
 
- // Validation function for the username
-
-
-  // registerUser() {
-  //   this.myService.Register(this.newUser).subscribe({
-  //     next: (data) => {
-  //     console.log('User registered successfully',data.body);
-  //     this.res=data.body;
-  //     this.Login();
-  //     },
-  //     error: (error) => {
-  //       // Handle error response
-  //       console.log("Error", error);
-        
-  //     }
-  //   })
-  // }
-
 
 
   registerUser() {
