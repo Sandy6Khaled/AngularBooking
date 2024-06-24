@@ -13,22 +13,19 @@
                 <a href="about.html" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Services</a>
                 <a href="package.html" class="nav-item nav-link">Packages</a>
-                <!-- <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="destination.html" class="dropdown-item">Destination</a>
-                        <a href="booking.html" class="dropdown-item">Booking</a>
-                        <a href="team.html" class="dropdown-item">Travel Guides</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div> -->
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
                 <a class="nav-item nav-link"><i class="fa-solid fa-heart"></i></a>
             </div>
-            <a routerLink="register" class="btn btn-primary rounded-pill py-2 px-4 me-2">Register</a>
-            <a routerLink="login" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
-       
+            
+            <!-- <a routerLink="register" class="btn btn-primary rounded-pill py-2 px-4 me-2">Register</a>
+            <a routerLink="login" class="btn btn-primary rounded-pill py-2 px-4">Login</a> -->
+            <a *ngIf="!isLoggedIn()" routerLink="register" class="btn btn-primary rounded-pill py-2 px-4 me-2">Register</a>
+            <a *ngIf="!isLoggedIn()" routerLink="login" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+            
+            <!-- Display the user's name if logged in -->
+            <div *ngIf="isLoggedIn()" class="nav-item nav-link">{{ getUserName() }}</div>
+            <a *ngIf="isLoggedIn()" routerLink="Home" class="btn btn-primary rounded-pill py-2 px-4" (click)="LogoutAndRedirect()">logout</a>
+
         </div>
     </nav>
 </div>
