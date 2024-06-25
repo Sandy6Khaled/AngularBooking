@@ -8,6 +8,7 @@ import { LoginUser } from '../../Models/LoginUser';
 import { LoginResponse, isLoginResponse } from '../../Models/LoginResponse';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+// import { AuthInterceptor } from '../../Interceptors/AuthInterceptor';
 
 @Component({
   selector: 'app-login',
@@ -43,6 +44,7 @@ export class LoginComponent {
   errorMessage: string = '';
   constructor(public myService: AuthenticationService, public router: Router) {}
   LoginUser() {
+    
     this.myService.Login(this.User).subscribe({
       next: (res) => {
         if (isLoginResponse(res.body)) {

@@ -35,8 +35,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/easing/browser-easing.js",
               "node_modules/owl.carousel/dist/owl.carousel.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/@stripe/stripe-js/lib/index.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+             
             ]
           },
           "configurations": {
