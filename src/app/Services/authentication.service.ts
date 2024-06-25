@@ -17,6 +17,6 @@ export class AuthenticationService {
   }
   handleLoginResponse(response: LoginResponse): void {
     const { accessToken } = response;
-    this.token.saveTokens(accessToken,response.refreshToken.userName);
+    this.token.saveTokens(accessToken,response.refreshToken.userName,response.refreshToken.userId,response.refreshToken.userRoles);
   }
 }

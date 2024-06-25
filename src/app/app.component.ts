@@ -4,6 +4,7 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dash
     HomeComponent,
     NavBarComponent,
     RegisterComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    FooterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

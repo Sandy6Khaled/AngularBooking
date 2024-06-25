@@ -9,12 +9,12 @@ import { Hotel } from '../Models/Hotels';
 export class HotelsService {
 
   constructor(private readonly http:HttpClient) { }
-  private readonly DB_url = "https://localhost:7182/Hotel"
+  private readonly DB_url = "https://localhost:7182/api/Hotel"
   getallHotels(){
     return this.http.get(`${this.DB_url}/allHotels`,{observe:"response"});
   }
   getById(Id:number): Observable<Hotel>{
-    return this.http.get<Hotel>(`${this.DB_url}/${Id}`);
+    return this.http.get<Hotel>(`${this.DB_url}/${Id}`).pipe();
   }
   getTrendingHotels(): Observable<any>{
     return this.http.get<Hotel[]>(`${this.DB_url}/trendingHotels`,{observe:"response",responseType:'json'}).pipe();

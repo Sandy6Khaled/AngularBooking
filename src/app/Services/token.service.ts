@@ -8,9 +8,11 @@ export class TokenService {
   private readonly REFRESH_TOKEN_KEY = 'refreshToken';
   constructor() { }
    // Save tokens to localStorage
-   saveTokens(accessToken: string,userName:string): void {
+   saveTokens(accessToken: string,userName:string,userId:number,userRoles:string[]): void {
     localStorage.setItem(this.ACCESS_TOKEN_KEY, accessToken);
     localStorage.setItem('userName', userName);
+    localStorage.setItem("userId",userId.toString());
+    localStorage.setItem("userRoles",JSON.stringify(userRoles));
     // localStorage.setItem(this.REFRESH_TOKEN_KEY, refreshToken);
   }
 
@@ -29,5 +31,7 @@ export class TokenService {
     localStorage.removeItem(this.ACCESS_TOKEN_KEY);
     localStorage.removeItem(this.REFRESH_TOKEN_KEY);
     localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userRoles");
   }
 }

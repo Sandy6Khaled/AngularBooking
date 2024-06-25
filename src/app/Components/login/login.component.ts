@@ -33,6 +33,8 @@ export class LoginComponent {
   loginRes: LoginResponse = {
     accessToken: '',
     refreshToken: {
+      userId:0,
+      userRoles:[],
       userName: '',
       token: '',
       expireDate: '',

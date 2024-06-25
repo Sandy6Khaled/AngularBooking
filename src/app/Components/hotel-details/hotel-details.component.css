@@ -99,4 +99,6 @@
     background: var(--primary); /* Change active state background color */
     border-color: green; /* Change active state border color */
   }
-  
+  #star{
+    width: 20px;
+  }
