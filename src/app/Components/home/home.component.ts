@@ -13,6 +13,9 @@ import { TeamComponent } from '../team/team.component';
 import { TestimonialComponent } from '../testimonial/testimonial.component';
 import { FooterComponent } from '../footer/footer.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
+import { CommonModule } from '@angular/common';
+import { SearchComponent } from '../search/search.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -31,11 +34,18 @@ import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.comp
     TeamComponent,
     TestimonialComponent,
     FooterComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    CommonModule,
+    SearchComponent,
+    HttpClientModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  searchResults: any[] = [];
 
+  handleSearchResults(results: any[]) {
+    this.searchResults = results;
+  }
 }
