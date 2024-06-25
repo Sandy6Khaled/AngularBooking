@@ -4,13 +4,15 @@ import { BookingService } from '../../Services/booking.service';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StripeService } from '../../Services/stripe.service';
+import { Room } from '../../Models/Rooms';
 // import { AuthInterceptor } from '../../Interceptors/AuthInterceptor';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
   imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-  providers: [BookingService],
+  providers: [BookingService,StripeService],
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css'],
 })
@@ -27,10 +29,12 @@ export class BookingComponent implements OnInit {
   };
   errorMessage: string = '';
   roomId: number = 0;
+  room :Room={id:0,price:0}
   constructor(
     private route: ActivatedRoute,
     private reservationService: BookingService,
-    private router: Router
+    private router: Router,
+    private stripeService: StripeService
   ) {}
   
   ngOnInit(): void {
@@ -44,21 +48,25 @@ export class BookingComponent implements OnInit {
       if (id) {
         this.reservation.roomIds[0] = +id;
         this.roomId = +id; // Convert id to a number
+        this.room.id=+id;
       }
       if (price) {
         this.reservation.amount = +price; // Convert price to a number
+        this.room.price=+price;
       }
     });
     console.log(this.roomId);
     console.log(this.reservation.roomIds[0]);
   }
+  
+
 
   onSubmit(): void {
     
     this.reservationService.createPaymentIntent(this.reservation).subscribe({
       next: (response) => {
         console.log(response);
-        
+        this.initiatePayment(this.room);
         // if (response === 'Registration succeeded') {
         //   this.router.navigate(['/login']);
         // } else {
@@ -70,6 +78,24 @@ export class BookingComponent implements OnInit {
         this.errorMessage = 'An error occurred. Please try again later.';
       },
     });
+  }
+
+
+  
+
+
+  initiatePayment(room: Room): void {
+    // Assuming you pass room details to StripeService
+    this.stripeService.initiatePayment(room).subscribe(
+      (session) => {
+        // Redirect to Stripe checkout page
+        window.location.href = session.url;
+      },
+      (error) => {
+        console.error('Failed to initiate payment:', error);
+        // Handle error
+      }
+    );
   }
 
   // isFormValid(): boolean {
