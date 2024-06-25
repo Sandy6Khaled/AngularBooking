@@ -5,6 +5,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -16,7 +17,8 @@ import { FooterComponent } from './Components/footer/footer.component';
     NavBarComponent,
     RegisterComponent,
     AdminDashboardComponent,
-    FooterComponent
+    FooterComponent,
+    FormsModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
