@@ -6,12 +6,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpHeaders } from '@angular/commo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StripeService } from '../../Services/stripe.service';
 import { Room } from '../../Models/Rooms';
+import { PaymentSuccessComponent } from '../payment-success/payment-success.component';
+import { PaymentCancelComponent } from '../payment-cancel/payment-cancel.component';
 // import { AuthInterceptor } from '../../Interceptors/AuthInterceptor';
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule,PaymentSuccessComponent,PaymentCancelComponent],
   providers: [BookingService,StripeService],
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css'],
@@ -66,7 +68,7 @@ export class BookingComponent implements OnInit {
     this.reservationService.createPaymentIntent(this.reservation).subscribe({
       next: (response) => {
         console.log(response);
-        this.initiatePayment(this.room);
+        // this.initiatePayment(this.room);
         // if (response === 'Registration succeeded') {
         //   this.router.navigate(['/login']);
         // } else {
