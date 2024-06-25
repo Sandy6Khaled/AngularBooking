@@ -1,4 +1,5 @@
 import { image } from './Images';
+import { Offer } from './Offers';
 import { Owner } from './Owners';
 import { Restaurant } from './Restaurants';
 import { Review } from './Reviews';
@@ -19,9 +20,10 @@ export type Hotel = {
   restaurants: Restaurant[];
   ownerId: number;
   owner: Owner;
-  wishLists: [];
+  wishLists: any[];
   reviews: Review[];
-  rooms: [];
-  complains: [];
+  offers:Offer[];
+  rooms: any[];
+  complains: any[];
   images: image[];
 };

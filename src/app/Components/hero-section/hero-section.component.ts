@@ -21,6 +21,8 @@ export class HeroSectionComponent {
   constructor(private searchService: SearchService) {}
 
   onSearch() {
+    console.log(this.searchTerm);
+    
     if (this.searchTerm.trim()) {
       this.searchService.Search(this.searchTerm).subscribe({
         next: (response: HttpResponse<any>) => {

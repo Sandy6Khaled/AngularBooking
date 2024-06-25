@@ -38,8 +38,8 @@ export class PackagesComponent implements OnInit{
   getHotel(id:number){
     this.hotelService.getById(id).subscribe({
       next: (data) => {
-        this.hotel = data.body
-        console.log(data.body);
+        this.hotel = data
+        console.log(data);
         
       },
       error: (error) => {}

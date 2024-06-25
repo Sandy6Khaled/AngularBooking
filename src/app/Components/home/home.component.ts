@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { RegisterComponent } from '../register/register.component';
 import { RouterModule } from '@angular/router';
@@ -16,6 +16,8 @@ import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.comp
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from '../search/search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HotelsService } from '../../Services/hotels.service';
+import { TrendinHotelsService } from '../../Services/trendin-hotels.service';
 
 @Component({
   selector: 'app-home',
@@ -37,15 +39,31 @@ import { HttpClientModule } from '@angular/common/http';
     AdminDashboardComponent,
     CommonModule,
     SearchComponent,
-    HttpClientModule
+    HttpClientModule,
   ],
+  providers:[TrendinHotelsService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent{
   searchResults: any[] = [];
-
+  hotels:any;
+  constructor(private hotelsService: TrendinHotelsService) { }
+  
   handleSearchResults(results: any[]) {
     this.searchResults = results;
   }
+  // gettrendingHotels() {
+  //   this.hotelsService.trendingHotels().subscribe({
+  //     next: (res) => {
+  //       this.hotels = res;
+  //       console.log(res);
+        
+  //     },
+  //     error: (err) => {
+  //       console.log("Error",err);
+        
+  //     },
+  //   });
+  //}
 }
