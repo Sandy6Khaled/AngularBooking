@@ -1,6 +1,6 @@
 // stripe.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Room } from '../Models/Rooms'; // Adjust as per your model
 
@@ -8,8 +8,9 @@ import { Room } from '../Models/Rooms'; // Adjust as per your model
   providedIn: 'root'
 })
 export class StripeService {
-
   private stripeApiUrl = 'https://api.stripe.com/v1/checkout/sessions'; // Example Stripe API endpoint
+  private stripePublishableKey = 'pk_test_51PVYiGRw6EgAB7PszXh9ACUnMORpCdn04dPYxpfnxsPPfl3iFV1V4FBich5TW0DCBNSkVdq8gjvUe7M7zbD3H3Fd00tnvTNHy6';
+  private stripeSecretKey = 'sk_test_51PVYiGRw6EgAB7PsyOh9hl5pkcw6Pp7SGcRCnk3r9027slka0DT5xhcE5mPiJfBGilVWkUaOItptoAFz4L5HbtwN00VbQ6VYKM';
 
   constructor(private http: HttpClient) {}
 
@@ -29,7 +30,10 @@ export class StripeService {
       success_url: 'http://localhost:4200/payment-success', // Replace with your success URL
       cancel_url: 'http://localhost:4200/payment-cancel', // Replace with your cancel URL
     };
-
-    return this.http.post<any>(this.stripeApiUrl, payload);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.stripeSecretKey}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post<any>(this.stripeApiUrl, payload,{headers});
   }
 }
