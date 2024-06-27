@@ -68,7 +68,12 @@ export class TokenService {
   getUserName():string{
     return this.cookieService.get("userName");
   }
- 
+ getRole(){
+  return this.cookieService.get("userRoles");
+ }
+ getUserId(){
+  return this.cookieService.get("userId");
+ }
   // Clear tokens from cookies
   clearTokens(): void {
     this.cookieService.delete(this.ACCESS_TOKEN_KEY);

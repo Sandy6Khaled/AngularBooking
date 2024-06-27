@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     RegisterComponent,
     AdminDashboardComponent,
     FooterComponent,
-    FormsModule,
+    FormsModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

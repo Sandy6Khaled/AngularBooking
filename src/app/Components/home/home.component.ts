@@ -18,6 +18,8 @@ import { SearchComponent } from '../search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HotelsService } from '../../Services/hotels.service';
 import { TrendinHotelsService } from '../../Services/trendin-hotels.service';
+import { TokenService } from '../../Services/token.service';
+import { PackageHomeComponent } from '../package-home/package-home.component';
 
 @Component({
   selector: 'app-home',
@@ -40,18 +42,29 @@ import { TrendinHotelsService } from '../../Services/trendin-hotels.service';
     CommonModule,
     SearchComponent,
     HttpClientModule,
+    PackageHomeComponent
   ],
-  providers:[TrendinHotelsService],
+  providers:[TrendinHotelsService,TokenService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent{
+export class HomeComponent implements OnInit{
   searchResults: any[] = [];
+  errorSearchResults:string='';
   hotels:any;
-  constructor(private hotelsService: TrendinHotelsService) { }
-  
+  constructor(private hotelsService: TrendinHotelsService,private token:TokenService) { }
+  ngOnInit(): void {
+    this.role=this.token.getRole();
+    console.log(this.role);
+    
+  }
+  role:any;
   handleSearchResults(results: any[]) {
     this.searchResults = results;
+  }
+  handleErrorSearchResult(errorSearch: string){
+    this.errorSearchResults = errorSearch;
+    console.log('Home Search Results:', this.errorSearchResults);
   }
   // gettrendingHotels() {
   //   this.hotelsService.trendingHotels().subscribe({

@@ -3,5 +3,12 @@ export type Review = {
   rate: number;
   comment: string;
   hotelId: number;
-  clientId: number;
+  hotel:{
+    id: number;
+    name: string;
+  };
+  clientId: {
+    id: number;
+    name: string;
+  };
 };

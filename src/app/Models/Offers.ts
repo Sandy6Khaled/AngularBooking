@@ -1,3 +1,5 @@
+import { Hotel } from "./Hotels";
+
 export type Offer= {
   id: number;
   description: string;
@@ -7,4 +9,5 @@ export type Offer= {
   isDeleted: boolean;
   ownerId: number;
   hotelId: number;
+  // hotel:Hotel;
 };

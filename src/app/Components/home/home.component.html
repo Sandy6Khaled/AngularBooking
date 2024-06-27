@@ -12,10 +12,12 @@
 
 <!-- Conditionally render components based on the search term -->
 <!-- home.component.html -->
-<app-hero-section (searchResults)="handleSearchResults($event)"></app-hero-section>
+<div *ngIf="role == '[&quot;User&quot;]'|| role==''">
+<app-hero-section (searchResults)="handleSearchResults($event)" (errorSearchResults)="handleErrorSearchResult($event)"></app-hero-section>
 
 <!-- Conditionally render components based on the search results -->
-<div *ngIf="searchResults.length === 0">
+<div *ngIf="searchResults.length === 0 && !errorSearchResults">
+  <app-package-home></app-package-home>
   <app-popular-destination></app-popular-destination>
   <app-packages></app-packages>
   <!-- <app-about></app-about>
@@ -26,10 +28,15 @@
   <!-- <app-footer></app-footer> -->
 </div>
 
-<div *ngIf="searchResults.length > 0">
-  <app-search [results]="searchResults"></app-search>
+<div *ngIf="searchResults.length > 0 || errorSearchResults">
+  <app-search [results]="searchResults"  [errorSearch]="errorSearchResults"></app-search>
   <!-- <app-footer></app-footer> -->
 </div>
+</div>
+<!-- <div *ngIf="role == '["Owner"]'">
+  <app-admin-dashboard></app-admin-dashboard>
+</div> -->
 
-<!-- <app-admin-dashboard></app-admin-dashboard> -->
-
+<div *ngIf="role == '[&quot;Owner&quot;]'">
+  <app-admin-dashboard></app-admin-dashboard>
+</div>

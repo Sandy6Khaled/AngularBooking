@@ -20,7 +20,7 @@ export type Hotel = {
   restaurants: Restaurant[];
   ownerId: number;
   owner: Owner;
-  wishLists: any[];
+  // wishLists: any[];
   reviews: Review[];
   offers:Offer[];
   rooms: any[];

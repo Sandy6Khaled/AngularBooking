@@ -4,11 +4,13 @@ import { RegisterComponent } from '../register/register.component';
 import { LoginComponent } from '../login/login.component';
 import { NavbarAuthService } from '../../Services/navbar-auth.service';
 import { CommonModule } from '@angular/common';
+import { WishlistService } from '../../Services/wishlist.service';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
   imports: [RouterModule, RegisterComponent, LoginComponent,CommonModule],
+  providers:[WishlistService],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })
@@ -25,4 +27,9 @@ export class NavBarComponent {
     this.myService.Logout();
     this.router.navigate(['home']);
   }
+  // toggleWishlist() {
+  //   console.log("WishList Toggled");
+    
+  //   // this.wishlistService.toggleWishlist();
+  // }
 }

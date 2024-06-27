@@ -7,6 +7,7 @@ import { HotelDetailsComponent } from './Components/hotel-details/hotel-details.
 import { BookingComponent } from './Components/booking/booking.component';
 import { PaymentSuccessComponent } from './Components/payment-success/payment-success.component';
 import { PaymentCancelComponent } from './Components/payment-cancel/payment-cancel.component';
+import { WishlistComponent } from './Components/wishlist/wishlist.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,4 +19,5 @@ export const routes: Routes = [
   { path: 'book/:Id/:price', component: BookingComponent },
   { path: 'payment-success', component: PaymentSuccessComponent },
   { path: 'payment-cancel', component: PaymentCancelComponent },
+  { path: 'wishlist', component: WishlistComponent },
 ];

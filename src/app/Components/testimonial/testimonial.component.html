@@ -6,10 +6,11 @@
     </div>
     <div class="owl-carousel testimonial-carousel position-relative">
       <div class="testimonial-item bg-white text-center border p-4" *ngFor="let slide of slides">
-        <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" [src]="slide.image" style="width: 80px; height: 80px;">
-        <h5 class="mb-0">{{slide.name}}</h5>
-        <p>{{slide.location}}</p>
-        <p class="mb-0">{{slide.text}}</p>
+        <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="./assets/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+        <h5 class="mb-0">{{slide.client.name}}</h5>
+        <p>{{slide.hotel.name}}</p>
+        <p class="mb-0">{{slide.comment}}</p>
+        <p class="mb-0">{{slide.rate}}</p>
       </div>
     </div>
   </div>
