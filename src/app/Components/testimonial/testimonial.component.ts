@@ -28,7 +28,7 @@ export class TestimonialComponent implements AfterViewInit {
         this.initOwlCarousel(); // Initialize Owl Carousel after data is loaded
       },
       error: (err) => {
-        console.log(err);
+        console.log("Testimonial Error",err);
       },
     });
   }

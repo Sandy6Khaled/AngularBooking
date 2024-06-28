@@ -121,11 +121,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HotelsService } from '../../Services/hotels.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { HotelReviewComponent } from '../hotel-review/hotel-review.component';
 
 @Component({
   selector: 'app-hotel-details',
   standalone: true,
-  imports: [CommonModule, HttpClientModule,RouterModule],
+  imports: [CommonModule, HttpClientModule,RouterModule,HotelReviewComponent],
   providers: [HotelsService],
   templateUrl: './hotel-details.component.html',
   styleUrls: ['./hotel-details.component.css']

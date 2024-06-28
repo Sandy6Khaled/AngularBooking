@@ -25,10 +25,10 @@ export class PopularDestinationComponent implements OnInit {
     this.hotelsService.trendingHotels().subscribe({
       next: (res) => {
         this.hotels = res;
-        console.log(res);
+        console.log("TrendingHotels",res);
       },
       error: (err) => {
-        console.log('Error', err);
+        console.log('Error in TrendingHotels', err);
       },
     });
   }

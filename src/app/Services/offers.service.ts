@@ -10,7 +10,7 @@ export class OffersService {
 
   constructor(private readonly http:HttpClient) { }
   private readonly DB_url="https://localhost:7182/api/Offer";
-  getOffers(): Observable<Offer[]>{
-    return this.http.get<Offer[]>(this.DB_url);
+  getOffers(): Observable<any>{
+    return this.http.get<any>(this.DB_url);
   }
 }

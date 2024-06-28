@@ -1,4 +1,4 @@
-export type addedAndDeletedWishList ={
-    clientId: number,
-    hotelId: number
-}
+export type addedAndDeletedWishList = {
+  userId: number;
+  hotelId: number;
+};

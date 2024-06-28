@@ -16,7 +16,8 @@ import { Hotel } from '../../Models/Hotels';
 })
 export class PackagesComponent implements OnInit{
   offers: Offer[] = [];
-  hotel:any;
+  // hotel:any;
+  hotels: { [key: number]: Hotel } = {}; // Map of hotelId to Hotel object
   constructor(private offersService: OffersService , private hotelService:HotelsService) { }
 
   ngOnInit(): void {
@@ -27,7 +28,11 @@ export class PackagesComponent implements OnInit{
     this.offersService.getOffers().subscribe({
       next: (data) => {
         this.offers = data;
-        console.log(data);
+        console.log("Offers",data);
+        // this.getHotel(this.offers.hotelId)
+        this.offers.forEach(offer => {
+          this.getHotel(offer.hotelId);
+        });
         
       },
       error: (error) => {
@@ -38,11 +43,15 @@ export class PackagesComponent implements OnInit{
   getHotel(id:number){
     this.hotelService.getById(id).subscribe({
       next: (data) => {
-        this.hotel = data
-        console.log(data);
+        // this.hotel = data
+        this.hotels[id] = data;
+        console.log("Hotel",data);
         
       },
-      error: (error) => {}
+      error: (error) => {
+        console.log("Hotel for Offers",error);
+        
+      }
     })
   }
 }

@@ -1,0 +1,51 @@
+<div class="review-container">
+    <div *ngFor="let review of reviews" class="review-card">
+        <div class="review-header">
+            <div class="reviewer-name">{{ review.client.name }}</div>
+            <div class="review-rating">
+                <!-- <ng-container *ngFor="let star of review.rate">
+            <span class="fa fa-star text-warning"></span>
+          </ng-container> -->
+                <ng-container *ngFor="let star of getWholeStars(review.rate)">
+                    <span class="fa fa-star text-warning"></span>
+                </ng-container>
+
+                <!-- Half star (if needed) -->
+                <ng-container *ngIf="hasHalfStar(review.rate)">
+                    <span class="fa fa-star-half-alt text-warning"></span>
+                </ng-container>
+            </div>
+        </div>
+        <div class="review-body">
+            <p>{{ review.comment }}</p>
+        </div>
+    </div>
+    <!-- Form to add a new review -->
+  <div class="add-review-form" *ngIf="!resultMessage">
+    <h3>Add a Review</h3>
+    <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating" class="form-control" required [(ngModel)]="newReview.rate">
+          <option value="1">1 Star</option>
+          <option value="1.5">1.5 Star</option>
+          <option value="2">2 Stars</option>
+          <option value="2.5">2.5 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="3.5">3.5 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="4.5">4.5 Stars</option>
+          <option value="5">5 Stars</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" class="form-control" rows="4" required [(ngModel)]="newReview.commentText"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Submit Review</button>
+    </form>
+    <div *ngIf="resultMessage" class="response-message alert alert-success">
+        {{ resultMessage }}
+      </div>
+  </div>
+</div>

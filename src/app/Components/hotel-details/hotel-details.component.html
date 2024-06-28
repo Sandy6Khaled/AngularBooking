@@ -1,4 +1,4 @@
-<div class="container-fluid px-4 py-5 mx-auto">
+<!-- <div class="container-fluid px-4 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="card border-0 ">
             <div class="row set-p justify-content-center bg-body-secondary">
@@ -42,8 +42,7 @@
                         <img class="img-fluid" [src]="room.image" alt="">
                     </div>
                     <div class="d-flex border-bottom">
-                        <!-- <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ room.type }}</small> -->
-                        <!-- <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>{{ room.duration }}</small> -->
+
                         <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{ room.numberOfBeds }}</small>
                     </div>
                     <div class="text-center p-4">
@@ -58,6 +57,169 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- <div class="container-fluid px-4 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="card border-0 ">
+        <div class="row set-p justify-content-center bg-body-secondary">
+          <div id="carouselExampleControls" class="carousel slide w-75 m-auto" data-ride="carousel">
+            <div class="carousel-inner ">
+              <div *ngFor="let slide of slides; let i = index" [class.active]="i === 0" class="carousel-item  ">
+                <img class="d-block w-100" [src]="slide.image" [alt]="'Slide ' + (i + 1)">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" (click)="onPrevClick($event)">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" (click)="onNextClick($event)">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="col-12">
+            <div class="row px-3 mt-4 mb-3">
+              <p class="rating mb-0 px-2 mr-3"><strong>{{ averageRating }}</strong></p>
+              <p class="text-primary mb-0 mr-2 grade"><strong>{{ ratingText }}</strong></p>
+              <p class="text-secondary mb-0 mr-2">{{ hotel.description }}</p>
+              <p class="text-secondary mb-0">{{ hotel.reviews.length }} reviews</p>
+            </div>
+            <div class="row px-3">
+              <h3 class="font-weight-bold">{{ hotel.name }}</h3>
+            </div>
+            <div class="row px-3 mb-2 mt-2 flex-row">
+              <ng-container *ngFor="let star of starArray">
+                <span class="fa fa-star text-warning mr-1" id="star"></span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="rooms-tab" data-bs-toggle="tab" href="#rooms" role="tab" aria-controls="rooms" aria-selected="true">Rooms</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="comments-tab" data-bs-toggle="tab" href="#comments" role="tab" aria-controls="comments" aria-selected="false">Comments</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="rooms" role="tabpanel" aria-labelledby="rooms-tab">
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let room of hotel.rooms">
+              <div class="package-item">
+                <div class="overflow-hidden">
+                  <img class="img-fluid" [src]="room.image" alt="">
+                </div>
+                <div class="d-flex border-bottom">
+                  <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{ room.numberOfBeds }}</small>
+                </div>
+                <div class="text-center p-4">
+                  <h3 class="mb-0">Price {{ room.price }}</h3>
+                  <div class="mb-3 d-flex align-items-start">
+                    <small *ngFor="let star of room.stars" class="fa fa-star text-primary"></small>
+                  </div>
+                  <p>{{ room.description }}</p>
+                  <div class="d-flex justify-content-center mb-2">
+                    <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                    <a [routerLink]="['/book',room.id,room.price]" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+          <app-hotel-review [hotelId]="hotel.id"></app-hotel-review>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<div class="container-fluid px-4 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="card border-0 ">
+            <div class="row set-p justify-content-center bg-body-secondary">
+                <div id="carouselExampleControls" class="carousel slide w-75 m-auto" data-ride="carousel">
+                    <div class="carousel-inner ">
+                        <div *ngFor="let slide of slides; let i = index" [class.active]="i === 0"
+                            class="carousel-item  ">
+                            <img class="d-block w-100" [src]="slide.image" [alt]="'Slide ' + (i + 1)">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"
+                        (click)="onPrevClick($event)">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"
+                        (click)="onNextClick($event)">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <div class="row px-3 mt-4 mb-3">
+                        <p class="rating mb-0 px-2 mr-3"><strong>{{ averageRating }}</strong></p>
+                        <p class="text-primary mb-0 mr-2 grade"><strong>{{ ratingText }}</strong></p>
+                        <p class="text-secondary mb-0 mr-2">{{ hotelDetails.description }}</p>
+                        <p class="text-secondary mb-0">{{ hotelDetails.reviews.length }} reviews</p>
+                    </div>
+                    <div class="row px-3">
+                        <h3 class="font-weight-bold">{{ hotelDetails.name }}</h3>
+                    </div>
+                    <div class="row px-3 mb-2 mt-2 flex-row">
+                        <ng-container *ngFor="let star of starArray">
+                            <span class="fa fa-star text-warning mr-1" id="star"></span>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="rooms-tab" data-bs-toggle="tab" href="#rooms" role="tab"
+                    aria-controls="rooms" aria-selected="true">Rooms</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="comments-tab" data-bs-toggle="tab" href="#comments" role="tab"
+                    aria-controls="comments" aria-selected="false">Comments</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="rooms" role="tabpanel" aria-labelledby="rooms-tab">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                        *ngFor="let room of hotelDetails.rooms">
+                        <div class="package-item">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" [src]="room.image" alt="">
+                            </div>
+                            <div class="d-flex border-bottom">
+                                <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{
+                                    room.numberOfBeds }}</small>
+                            </div>
+                            <div class="text-center p-4">
+                                <h3 class="mb-0">Price {{ room.price }}</h3>
+                                <div class="mb-3 d-flex align-items-start">
+                                    <small *ngFor="let star of room.stars" class="fa fa-star text-primary"></small>
+                                </div>
+                                <p>{{ room.description }}</p>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <a href="#" class="btn btn-sm btn-primary px-3 border-end"
+                                        style="border-radius: 30px 0 0 30px;">Read More</a>
+                                    <a [routerLink]="['/book', room.id, room.price]" class="btn btn-sm btn-primary px-3"
+                                        style="border-radius: 0 30px 30px 0;">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
+                <app-hotel-review [hotelId]="hotelDetails.id" [hotelName]="hotelDetails.name"></app-hotel-review>
             </div>
         </div>
     </div>

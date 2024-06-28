@@ -53,7 +53,10 @@
         <div class="shopping-cart section">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div *ngIf="errorMessage && wishList.hotels.length == 0" class="alert alert-danger">
+                        {{ errorMessage }}
+                    </div>
+                    <div class="col-12" *ngIf="wishList.hotels.length >0 && !errorMessage">
                         <!-- Shopping Summery -->
                         <table class="table shopping-summery">
                             <thead>
@@ -70,7 +73,7 @@
                             <tbody class="text-center">
                                 <tr *ngFor="let hotel of wishList.hotels">
                                     <td class="image" data-title="No">
-                                        <img [src]="hotel.images.length > 0 ? hotel.images[0].source : 'https://via.placeholder.com/100x100'" alt="#" >
+                                        <img [src]="hotel.images[0].source " alt="#" >
                                     </td>
                                     <td class="product-des" data-title="Description">
                                         <p class="product-name" ><a href="#">{{ hotel.name }}</a></p>
@@ -80,12 +83,13 @@
                                         <span>{{ hotel.numberOfStars }}</span>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" href="" >Book Now</a>
+                                        <a [routerLink]="['/details',hotel.id]" class="btn btn-primary" href="" >Book Now</a>
                                     </td>
                                     <td class="action" data-title="Remove">
-                                        <a href="#" (click)="removeFromWishlist(hotel.id)"><i class="fa fa-trash-can"></i></a>
+                                        <a  (click)="removeFromWishlist(hotel.id)"><i class="fa fa-trash-can"></i></a>
                                     </td>
                                 </tr>
+                                <!-- (click)="removeFromWishlist(hotel.id)" -->
                             </tbody>
                         </table>
                         <!--/ End Shopping Summery -->

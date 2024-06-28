@@ -7,7 +7,7 @@ export type Review = {
     id: number;
     name: string;
   };
-  clientId: {
+  client: {
     id: number;
     name: string;
   };
