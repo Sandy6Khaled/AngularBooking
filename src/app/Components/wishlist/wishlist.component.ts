@@ -68,6 +68,10 @@ export class WishlistComponent implements OnInit {
           this.wishList.hotels = this.wishList.hotels.filter(
             (hotel: any) => hotel.id !== hotelId
           );
+        if(this.wishList.hotels.length == 0){
+          this.errorMessage = "OOPS!!! There is No Wish List for you now,Try again after adding";
+        }
+          
           console.log('Updated wishlist:', this.wishList.hotels);
           // this.router.navigate(['../wishlist']);
         },
