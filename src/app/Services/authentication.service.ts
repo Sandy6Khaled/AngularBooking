@@ -23,12 +23,12 @@ export class AuthenticationService {
     return this.http.post(`${this.DB_url}/Logout`,refreshToken,{observe:'response'})
   }
   SendResetPasswordRequest(email:FormData){
-    return this.http.post(`${this.DB_url}/SendResetPasswordRequest`,email,{observe:'response'})
+    return this.http.post(`${this.DB_url}/SendResetPasswordRequest`,email,{observe:'response',responseType:'text'})
   }
   ConfirmResetPassword(confirmRequest:FormData){
-    return this.http.post(`${this.DB_url}/ConfirmResetPassword`,confirmRequest,{observe:'response'})
+    return this.http.post(`${this.DB_url}/ConfirmResetPassword`,confirmRequest,{observe:'response',responseType:'text'})
   }
   ResetPassword(newResetPassword:FormData){
-    return this.http.post(`${this.DB_url}/ResetPassword`,newResetPassword,{observe:'response'})
+    return this.http.post(`${this.DB_url}/ResetPassword`,newResetPassword,{observe:'response',responseType:'text'})
   }
 }
