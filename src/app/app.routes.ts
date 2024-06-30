@@ -12,6 +12,11 @@ import { AddHotelFormComponent } from './Components/add-hotel-form/add-hotel-for
 import { ConfirmEmailComponent } from './Components/confirm-email/confirm-email.component';
 import { AddRoomComponent } from './Components/add-room/add-room.component';
 import { AddOfferComponent } from './Components/add-offer/add-offer.component';
+import { OwnerRegisterComponent } from './Components/owner-register/owner-register.component';
+import { OwnerRegisterConfirmedComponent } from './Components/owner-register-confirmed/owner-register-confirmed.component';
+import { SendResetPasswordFormComponent } from './Components/send-reset-password-form/send-reset-password-form.component';
+import { ResetPasswordCodeFormComponent } from './Components/reset-password-code-form/reset-password-code-form.component';
+import { NewResetPasswordFormComponent } from './Components/new-reset-password-form/new-reset-password-form.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,4 +33,9 @@ export const routes: Routes = [
   { path: 'emailconfirmation', component: ConfirmEmailComponent },
   { path: 'addroom/:Id', component: AddRoomComponent },
   { path: 'addoffer/:Id', component: AddOfferComponent },
+  { path: 'registerowner', component: OwnerRegisterComponent },
+  { path: 'registrationconfirmed', component: OwnerRegisterConfirmedComponent },
+  { path: 'sendreset', component: SendResetPasswordFormComponent },
+  { path: 'resetcode', component: ResetPasswordCodeFormComponent },
+  { path: 'resetpassword', component: NewResetPasswordFormComponent },
 ];

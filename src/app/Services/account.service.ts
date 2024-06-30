@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RegisterUser } from '../Models/RegisterUser';
+import { OwnerRegister, RegisterUser } from '../Models/RegisterUser';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,5 +12,8 @@ export class AccountService {
   private readonly DB_url = "https://localhost:7182/api/Account";
   Register(registerUser : RegisterUser): Observable<any>{
     return this.http.post(this.DB_url,registerUser,{observe:"response",responseType: "text"}).pipe();
+  }
+  OwnerRegister(ownerRegister:FormData):Observable<any>{
+    return this.http.post(this.DB_url+"/OwnerRegister",ownerRegister, {observe:"response",responseType:'text'}).pipe()
   }
 }

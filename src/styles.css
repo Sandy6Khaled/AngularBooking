@@ -6,7 +6,16 @@
     --light: #F5F5F5;
     --dark: #14141F;
 }
-
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+app-footer{
+    margin-top: auto;
+}
 .fw-medium {
     font-weight: 600 !important;
 }

@@ -1,0 +1,119 @@
+<div class="registration-form">
+    <form (ngSubmit)="registerUser()" #registrationForm="ngForm" enctype="multipart/form-data">
+      <div class="form-icon">
+        <span><i class="fa-regular fa-user"></i></span>
+      </div>
+  
+      <div class="form-group">
+        <button type="button" class="btn btn-block create-account btn-google col-12"><i class="fa-brands fa-google"></i></button>
+      </div>
+  
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="username" placeholder="Username" 
+               [(ngModel)]="newUser.UserName" name="UserName" 
+               #username="ngModel"
+               required minlength="6" 
+               pattern="^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*()_+\{}|:<>?~\-]{6,}$"
+               [class.is-invalid]="username.invalid && (username.dirty || username.touched)">
+        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
+          Username must be at least 6 characters long and contain at least one uppercase and one lowercase letter.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="email" class="form-control item" id="email" placeholder="Email" 
+               [(ngModel)]="newUser.Email" name="Email" 
+               #email="ngModel" required email 
+               [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="password" class="form-control item" id="password" placeholder="Password" 
+               [(ngModel)]="newUser.Password" name="Password" 
+               #password="ngModel" required 
+               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\{}|:<>?~\-])[a-zA-Z0-9!@#$%^&*()_+\{}|:<>?~\-]{6,}$"
+               [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+          Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, and one special character.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="password" class="form-control item" id="confirm-password" placeholder="Confirm Password" 
+               [(ngModel)]="newUser.ConfirmPassword" name="ConfirmPassword" 
+               #confirmPassword="ngModel" required 
+               [class.is-invalid]="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) || (confirmPassword.dirty && newUser.Password !== newUser.ConfirmPassword)">
+        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) || (confirmPassword.dirty && newUser.Password !== newUser.ConfirmPassword)" class="invalid-feedback">
+          Passwords do not match.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number" 
+               [(ngModel)]="newUser.PhoneNumber" name="PhoneNumber" 
+               #phoneNumber="ngModel" required pattern="^\d{11}$"
+               [class.is-invalid]="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
+        <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="invalid-feedback">
+          <div *ngIf="phoneNumber.errors?.['required']">Phone number is required.</div>
+          <div *ngIf="phoneNumber.errors?.['pattern']">Phone number must be exactly 11 digits.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="city" placeholder="City" 
+               [(ngModel)]="newUser.City" name="City" 
+               #city="ngModel" required 
+               [class.is-invalid]="city.invalid && (city.dirty || city.touched)">
+        <div *ngIf="city.invalid && (city.dirty || city.touched)" class="invalid-feedback">
+          City is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="street" placeholder="Street" 
+               [(ngModel)]="newUser.Street" name="Street" 
+               #street="ngModel" required 
+               [class.is-invalid]="street.invalid && (street.dirty || street.touched)">
+        <div *ngIf="street.invalid && (street.dirty || street.touched)" class="invalid-feedback">
+          Street is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="postal-code" placeholder="Postal Code" 
+               [(ngModel)]="newUser.PostalCode" name="PostalCode" 
+               #postalCode="ngModel" required pattern="^\d{5}$"
+               [class.is-invalid]="postalCode.invalid && (postalCode.dirty || postalCode.touched)">
+        <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)" class="invalid-feedback">
+          <div *ngIf="postalCode.errors?.['required']">Postal code is required.</div>
+          <div *ngIf="postalCode.errors?.['pattern']">Postal code must be exactly 5 digits.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="certificate">Certificate</label>
+        <input type="file" class="form-control item" id="certificate" placeholder="Certificate"
+               (change)="onCertificateChange($event)" multiple />
+        <span class="text-danger"></span>
+      </div>
+  
+      <div class="form-group">
+        <button type="submit" class="btn btn-block create-account col-12" [disabled]="registrationForm.invalid">Create Account</button>
+      </div>
+  
+      <div class="row text-center mt-2">
+        <div class="col-sm-12">
+          <span>Have an account ? </span><a routerLink="../login">Login</a>
+        </div>
+      </div>
+    </form>
+  </div>
+  
