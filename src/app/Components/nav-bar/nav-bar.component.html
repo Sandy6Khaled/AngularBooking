@@ -14,7 +14,7 @@
                 <a href="service.html" class="nav-item nav-link">Services</a>
                 <a href="package.html" class="nav-item nav-link">Packages</a>
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
-                <a class="nav-item nav-link" routerLink="wishlist"><i class="fa-solid fa-heart"></i></a>
+                <a class="nav-item nav-link" routerLink="wishlist" *ngIf="getUserRole() =='[&quot;User&quot;]'"><i class="fa-solid fa-heart"></i></a>
             </div>
             
             <!-- <a routerLink="register" class="btn btn-primary rounded-pill py-2 px-4 me-2">Register</a>

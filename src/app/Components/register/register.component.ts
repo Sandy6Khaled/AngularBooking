@@ -116,7 +116,7 @@ export class RegisterComponent {
       next: (data) => {
         console.log(data.body);
         if (data.body === "Registration succeeded") {
-          this.Login();
+          this.emailConfirmation();
         } else {
           this.errorMessage = data.body;
         }
@@ -129,10 +129,10 @@ export class RegisterComponent {
     });
   }
 
-  Login(){
-    console.log("Navigate to login");
+  emailConfirmation(){
+    console.log("Navigate to emailConfirmation");
     
-    this.router.navigate(['/login']);
+    this.router.navigate(['/emailconfirmation']);
   }
 }
 /*response => {

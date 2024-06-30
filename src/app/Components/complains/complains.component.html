@@ -1,0 +1,36 @@
+<div class="container-fluid px-4 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <h3 class="text-center">Add Complain</h3>
+        <form *ngIf="showForm" (ngSubmit)="submitComplain()" #complainForm="ngForm"
+            class="bg-secondary-subtle p-3 rounded-3">
+            <!-- <div class="form-group">
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating" class="form-control" required [(ngModel)]="newReview.rate">
+                    <option value="1">1 Star</option>
+                    <option value="1.5">1.5 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="2.5">2.5 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="3.5">3.5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="4.5">4.5 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div> -->
+            <div class="form-group">
+                <label for="comment">Complain:</label>
+                <textarea id="comment" name="comment" class="form-control" rows="4" required
+                    [(ngModel)]="newComplain.description"></textarea>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-outline-dark mt-2">Submit</button>
+            </div>
+        </form>
+        <div *ngIf="!showForm && !resultMessage" class="response-message alert alert-info">
+            No More Complains Please!!!
+        </div>
+    </div>
+    <div *ngIf="resultMessage" class="response-message alert alert-success">
+        {{ resultMessage }}
+    </div>
+</div>

@@ -8,6 +8,10 @@ import { BookingComponent } from './Components/booking/booking.component';
 import { PaymentSuccessComponent } from './Components/payment-success/payment-success.component';
 import { PaymentCancelComponent } from './Components/payment-cancel/payment-cancel.component';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
+import { AddHotelFormComponent } from './Components/add-hotel-form/add-hotel-form.component';
+import { ConfirmEmailComponent } from './Components/confirm-email/confirm-email.component';
+import { AddRoomComponent } from './Components/add-room/add-room.component';
+import { AddOfferComponent } from './Components/add-offer/add-offer.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,4 +24,8 @@ export const routes: Routes = [
   { path: 'payment-success', component: PaymentSuccessComponent },
   { path: 'payment-cancel', component: PaymentCancelComponent },
   { path: 'wishlist', component: WishlistComponent },
+  { path: 'addhotel', component: AddHotelFormComponent },
+  { path: 'emailconfirmation', component: ConfirmEmailComponent },
+  { path: 'addroom/:Id', component: AddRoomComponent },
+  { path: 'addoffer/:Id', component: AddOfferComponent },
 ];

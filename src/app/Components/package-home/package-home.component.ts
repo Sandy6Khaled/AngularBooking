@@ -6,12 +6,13 @@ import { RouterModule, Router } from '@angular/router';
 import { TokenService } from '../../Services/token.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { addedAndDeletedWishList } from '../../Models/addedAndDeletedWishList';
+import { RoomService } from '../../Services/room.service';
 
 @Component({
   selector: 'app-package-home',
   standalone: true,
   imports: [CommonModule, HttpClientModule, RouterModule],
-  providers: [HotelsService, TokenService, WishlistService],
+  providers: [HotelsService, TokenService, WishlistService,RoomService],
   templateUrl: './package-home.component.html',
   styleUrl: './package-home.component.css',
 })
@@ -22,11 +23,14 @@ export class PackageHomeComponent implements OnInit {
     hotelId: 0,
     userId: 0,
   };
+  roomCounts: { [hotelId: number]: number } = {};
+
   constructor(
     public HotelService: HotelsService,
     public tokenService: TokenService,
     public wishlistService: WishlistService,
-    private router: Router
+    private router: Router,
+    private roomService: RoomService
   ) {}
   ngOnInit(): void {
     this.getall();
@@ -36,6 +40,9 @@ export class PackageHomeComponent implements OnInit {
       next: (data) => {
         this.results = data.body;
         console.log(this.results);
+        this.results.forEach((h:any) => {
+          this.getNumberofRooms(h.id);
+        });
       },
       error: (err) => {
         console.log('Error in GetAllHotels', err);
@@ -70,5 +77,17 @@ export class PackageHomeComponent implements OnInit {
     } else {
       console.error('User ID not found in token');
     }
+  }
+  getNumberofRooms(hotelId: number) {
+    this.roomService.getRoomCount(hotelId).subscribe({
+      next: (data) => {
+        // this.roomNum = data.body;
+        this.roomCounts[hotelId] = data.body;
+        console.log('Room Count', this.roomCounts);
+      },
+      error: (err) => {
+        console.log('Error on getting Room Number', err);
+      },
+    });
   }
 }

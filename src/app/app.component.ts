@@ -6,6 +6,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dashboard.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { OwnerDashboardComponent } from './Components/owner-dashboard/owner-dashboard.component';
 
 
 @Component({
@@ -16,7 +17,6 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     NavBarComponent,
     RegisterComponent,
-    AdminDashboardComponent,
     FooterComponent,
     FormsModule
   ],

@@ -45,36 +45,39 @@
             <h6 class="section-title bg-white text-center text-primary px-3">Offers</h6>
             <h1 class="mb-5">Awesome Offers</h1>
         </div>
-        <div class="row g-4 justify-content-center">
+        <div class="row g-4 justify-content-center overflow-hidden">
             <div *ngFor="let offer of offers" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="package-item">
-                    <!-- <div class="overflow-hidden" (load)="getHotel(offer.hotelId)" *ngIf="hotel.images.length > 0">
+                <a [routerLink]="['/details', offer.hotelId]" class="text-decoration-none text-dark">
+                    <div class="package-item">
+                        <!-- <div class="overflow-hidden" (load)="getHotel(offer.hotelId)" *ngIf="hotel.images.length > 0">
                         
                         <img class="img-fluid" [src]="hotel.images[0].source" alt=""  >
                     </div> -->
-                    <!-- <div class="overflow-hidden" *ngIf="hotels[offer.hotelId]?.images.length > 0">
+                        <!-- <div class="overflow-hidden" *ngIf="hotels[offer.hotelId]?.images.length > 0">
                         <img class="img-fluid" [src]="hotels[offer.hotelId].images[0].source" alt="">
                       </div> -->
-                    <div class="overflow-hidden"
-                        *ngIf="hotels[offer.hotelId] && hotels[offer.hotelId].images && hotels[offer.hotelId].images.length > 0">
-                        <img class="img-fluid" [src]="hotels[offer.hotelId].images[0].source" alt="">
-                    </div>
-                    <div class="d-flex border-bottom p-1">
-                        <small class="flex-fill text-center border-end p-2">
-                            <i class="fa fa-calendar-alt text-primary me-2"></i>{{ offer.startDate | date: 'mediumDate'
-                            }} - {{ offer.endDate | date: 'mediumDate' }}
-                        </small>
-                        <small class="flex-fill text-center border-end p-2">
-                            <i class="fa fa-percent text-primary me-2"></i>{{ offer.discount }}% Discount
-                        </small>
-                    </div>
-                    <div class="text-center p-4">
-                        <h3 class="mb-0">{{ offer.description }}</h3>
-                        <!-- <p>Owner ID: {{ offer.ownerId }}</p>
+                        <div class="overflow-hidden"
+                            *ngIf="hotels[offer.hotelId] && hotels[offer.hotelId].images && hotels[offer.hotelId].images.length > 0">
+                            <img class="img-fluid w-100" [src]="hotels[offer.hotelId].images[0].source" alt="">
+                        </div>
+                        <div class="d-flex border-bottom p-1">
+                            <small class="flex-fill text-center border-end p-2">
+                                <i class="fa fa-calendar-alt text-primary me-2"></i>{{ offer.startDate | date:
+                                'mediumDate'
+                                }} - {{ offer.endDate | date: 'mediumDate' }}
+                            </small>
+                            <small class="flex-fill text-center border-end p-2">
+                                <i class="fa fa-percent text-primary me-2"></i>{{ offer.discount }}% Discount
+                            </small>
+                        </div>
+                        <div class="text-center p-4">
+                            <h3 class="mb-0">{{ offer.description }}</h3>
+                            <!-- <p>Owner ID: {{ offer.ownerId }}</p>
                         <p>Hotel ID: {{ offer.hotelId }}</p> -->
-                        <!-- Add more details as needed -->
+                            <!-- Add more details as needed -->
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

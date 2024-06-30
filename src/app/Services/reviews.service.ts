@@ -11,9 +11,12 @@ export class ReviewsService {
   constructor(private readonly http:HttpClient) { }
   private readonly DB_url = "https://localhost:7182/api/Review";
   getReviews(){
-    return this.http.get(this.DB_url);
+    return this.http.get(this.DB_url,{observe:'response'}).pipe();
   }
   addReview(clientId:number,hotelId:number,review:addedReview):Observable<any>{
     return this.http.post(`${this.DB_url}/${clientId}/${hotelId}`,review,{observe:"response",responseType:"text"}).pipe();
+  }
+  getReviewsByHotelId(hotelId:number){
+    return this.http.get(`${this.DB_url}/${hotelId}`,{observe:'response'}).pipe()
   }
 }

@@ -11,3 +11,13 @@ export type Offer= {
   hotelId: number;
   // hotel:Hotel;
 };
+export type addedOffer= {
+
+  description: string;
+  startDate: string;
+  endDate: string;
+  discount: number;
+  userId: number;
+  hotelId: number;
+  // hotel:Hotel;
+};

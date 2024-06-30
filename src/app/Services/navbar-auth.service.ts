@@ -17,6 +17,10 @@ export class NavbarAuthService {
     const userName = this.token.getUserName();
     return userName || '';
   }
+  getUserRole():string{
+    const userRole = this.token.getRole();
+    return userRole || '';
+  }
   Logout(){
     this.token.clearTokens();
   }

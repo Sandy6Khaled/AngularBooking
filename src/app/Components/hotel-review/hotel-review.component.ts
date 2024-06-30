@@ -16,7 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './hotel-review.component.css',
 })
 export class HotelReviewComponent implements OnInit {
-  @Input() hotelId!: number;
+  @Input() HotelId!: number;
   @Input() hotelName!: string;
   reviews: any;
   resultMessage:string='';
@@ -36,7 +36,10 @@ export class HotelReviewComponent implements OnInit {
   };
   constructor(private readonly reviewService: ReviewsService,private readonly tokenService:TokenService) {}
   ngOnInit(): void {
-    this.getAllReviews();
+    // this.getAllReviews();
+    this.getReviewsForHotel();
+    console.log("HotelId",this.HotelId);
+    
   }
   getAllReviews() {
     this.reviewService.getReviews().subscribe({
@@ -50,6 +53,17 @@ export class HotelReviewComponent implements OnInit {
       },
     });
   }
+  getReviewsForHotel(){
+    this.reviewService.getReviewsByHotelId(this.HotelId).subscribe({
+      next:(res)=>{
+        this.reviews=res.body;
+        console.log('Hotel reviews',this.reviews);
+      },
+      error:(err)=>{
+        console.log('Error Getting Hotel Reviews',err);
+      }
+    })
+  }
   getWholeStars(rating: number): number[] {
     return Array(Math.floor(rating)).fill(0);
   }
@@ -60,12 +74,12 @@ export class HotelReviewComponent implements OnInit {
 
   submitReview(){
     this.newReview.userId = +this.tokenService.getUserId();
-    this.newReview.hotelId = this.hotelId;
+    this.newReview.hotelId = this.HotelId;
     this.client.id = +this.tokenService.getUserId();
     this.client.name = this.tokenService.getUserName();
-    this.hotel.id = this.hotelId;
+    this.hotel.id = this.HotelId;
     this.hotel.name = this.hotelName;
-    this.reviewService.addReview(this.newReview.userId,this.hotelId,this.newReview).subscribe({
+    this.reviewService.addReview(this.newReview.userId,this.HotelId,this.newReview).subscribe({
       next: (response) => {
         this.resultMessage = response.body;
         console.log(this.resultMessage);
@@ -74,9 +88,9 @@ export class HotelReviewComponent implements OnInit {
           id: response.id, // Assuming the response contains the new review's ID
           rate: this.newReview.rate,
           comment: this.newReview.commentText,
-          hotelId: this.hotelId,
+          hotelId: this.HotelId,
           hotel: {
-            id: this.hotelId,
+            id: this.HotelId,
             name: this.hotelName, // Or fetch the actual hotel name if available
           },
           client: {

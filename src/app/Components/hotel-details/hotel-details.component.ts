@@ -122,11 +122,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { HotelsService } from '../../Services/hotels.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HotelReviewComponent } from '../hotel-review/hotel-review.component';
+import { ComplainsComponent } from '../complains/complains.component';
 
 @Component({
   selector: 'app-hotel-details',
   standalone: true,
-  imports: [CommonModule, HttpClientModule,RouterModule,HotelReviewComponent],
+  imports: [CommonModule, HttpClientModule,RouterModule,HotelReviewComponent,ComplainsComponent],
   providers: [HotelsService],
   templateUrl: './hotel-details.component.html',
   styleUrls: ['./hotel-details.component.css']
@@ -170,6 +171,8 @@ export class HotelDetailsComponent implements AfterViewInit, OnInit {
     this.route.params.subscribe(params => {
       this.hotelId = +params['Id'];  // Retrieve the hotel ID from the URL
       this.loadHotelDetails(this.hotelId);
+      console.log("Hotel Details Id",this.hotelId);
+      
     });
   }
 

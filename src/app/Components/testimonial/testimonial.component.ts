@@ -23,7 +23,7 @@ export class TestimonialComponent implements AfterViewInit {
   getallReviews() {
     this.reviewService.getReviews().subscribe({
       next: (data) => {
-        this.slides = data;
+        this.slides = data.body;
         console.log('Reviews', data);
         this.initOwlCarousel(); // Initialize Owl Carousel after data is loaded
       },

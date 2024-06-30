@@ -5,11 +5,12 @@ import { OffersService } from '../../Services/offers.service';
 import { Offer } from '../../Models/Offers';
 import { HotelsService } from '../../Services/hotels.service';
 import { Hotel } from '../../Models/Hotels';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-packages',
   standalone: true,
-  imports: [CommonModule,HttpClientModule],
+  imports: [CommonModule,HttpClientModule,RouterModule],
   providers:[OffersService,HotelsService],
   templateUrl: './packages.component.html',
   styleUrl: './packages.component.css'

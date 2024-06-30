@@ -20,6 +20,7 @@ import { HotelsService } from '../../Services/hotels.service';
 import { TrendinHotelsService } from '../../Services/trendin-hotels.service';
 import { TokenService } from '../../Services/token.service';
 import { PackageHomeComponent } from '../package-home/package-home.component';
+import { OwnerDashboardComponent } from '../owner-dashboard/owner-dashboard.component';
 
 @Component({
   selector: 'app-home',
@@ -42,7 +43,8 @@ import { PackageHomeComponent } from '../package-home/package-home.component';
     CommonModule,
     SearchComponent,
     HttpClientModule,
-    PackageHomeComponent
+    PackageHomeComponent,
+    OwnerDashboardComponent
   ],
   providers:[TrendinHotelsService,TokenService],
   templateUrl: './home.component.html',
