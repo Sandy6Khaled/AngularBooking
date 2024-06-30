@@ -1,1 +1,66 @@
-<p>profile works!</p>
+<div class="registration-form">
+    
+    <!-- (ngSubmit)="registerUser()" -->
+    <form  #registrationForm="ngForm">
+      <div class="form-icon overflow-hidden">
+        <!-- <span><i class="fa-regular fa-user"></i></span> -->
+         <img class="w-100 h-100" [src]="userProfile.image" alt="">
+      </div>
+  
+      
+      
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="username" placeholder="Username" 
+               [(ngModel)]="userProfile.userName" name="userName" disabled>
+      </div>
+  
+      <div class="form-group">
+        <input type="email" class="form-control item" id="email" placeholder="Email" 
+               [(ngModel)]="userProfile.email" name="email" disabled>
+      </div>
+<!--   
+      <div class="form-group">
+        <input type="password" class="form-control item" id="password" placeholder="Password" 
+               [(ngModel)]="userProfile.password" name="password">
+      </div>
+  
+      <div class="form-group">
+        <input type="password" class="form-control item" id="confirm-password" placeholder="Confirm Password" 
+               [(ngModel)]="userProfile.confirmPassword" name="confirmPassword">
+      </div> -->
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number" 
+               [(ngModel)]="userProfile.phoneNumber" name="phoneNumber" disabled>
+      </div>
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="city" placeholder="City" 
+               [(ngModel)]="userProfile.city" name="city" disabled>
+      </div>
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="street" placeholder="Street" 
+               [(ngModel)]="userProfile.street" name="street" disabled>
+      </div>
+  
+      <div class="form-group">
+        <input type="text" class="form-control item" id="postal-code" placeholder="Postal Code" 
+               [(ngModel)]="userProfile.postalCode" name="postalCode" disabled>
+      </div>
+        <!-- <div class="form-group" >
+          <label for="Image" class="control-label">Upload Image</label>
+          <input type="file" (change)="onFileChange($event)" multiple class="form-control-file" name="Image" />
+        </div> -->
+      
+      <div class="form-group">
+        <button type="submit" class="btn btn-block create-account col-12" routerLink="../updateprofile" >Update Profile</button>
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-block delete-account col-12">Delete Account</button>
+      </div>
+      
+    </form>
+  </div>
+  

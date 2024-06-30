@@ -40,7 +40,6 @@
 
 //  // Validation function for the username
 
-
 //   registerUser() {
 //     this.myService.Register(this.newUser).subscribe({
 //       next: (data) => {
@@ -55,7 +54,7 @@
 //   }
 //   Login(){
 //     console.log("Navigate to login");
-    
+
 //     this.router.navigate(['/login']);
 //   }
 // }
@@ -64,8 +63,6 @@
 //     }, error => {
 //       console.error('Error registering user', error);
 //     });*/
-
-
 
 import { Component, OnInit } from '@angular/core';
 import {
@@ -88,50 +85,51 @@ import { RegisterUser } from '../../Models/RegisterUser';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [LoginComponent, RouterModule, HttpClientModule,FormsModule,CommonModule,ReactiveFormsModule],
+  imports: [
+    LoginComponent,
+    RouterModule,
+    HttpClientModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+  ],
   providers: [AccountService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   newUser: RegisterUser = {
-    userName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    city: "",
-    street: "",
-    postalCode: "",
-    phoneNumber: ""
+    userName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    city: '',
+    street: '',
+    postalCode: '',
+    phoneNumber: '',
   };
-  res:any;
+  res: any;
   errorMessage: string = '';
 
-  constructor(public myService: AccountService, public router:Router) { }
-
-
+  constructor(public myService: AccountService, public router: Router) {}
 
   registerUser() {
     this.myService.Register(this.newUser).subscribe({
       next: (data) => {
         console.log(data.body);
-        if (data.body === "Registration succeeded") {
-          this.emailConfirmation();
-        } else {
-          this.errorMessage = data.body;
-        }
+        this.emailConfirmation();
       },
       error: (error) => {
         // Handle HTTP errors
-        console.error("Error", error);
+        console.error('Error', error);
         this.errorMessage = 'Registration failed. Please try again.';
-      }
+      },
     });
   }
 
-  emailConfirmation(){
-    console.log("Navigate to emailConfirmation");
-    
+  emailConfirmation() {
+    console.log('Navigate to emailConfirmation');
+
     this.router.navigate(['/emailconfirmation']);
   }
 }

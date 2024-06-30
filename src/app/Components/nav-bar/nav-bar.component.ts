@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { RegisterComponent } from '../register/register.component';
 import { LoginComponent } from '../login/login.component';
@@ -16,6 +16,7 @@ import { TokenService } from '../../Services/token.service';
   styleUrl: './nav-bar.component.css',
 })
 export class NavBarComponent {
+  @Output() userId:EventEmitter<number>=new EventEmitter<number>();
   constructor(public myService: NavbarAuthService,public router:Router) {}
   isLoggedIn(): boolean {
     return this.myService.isLoggedIn();

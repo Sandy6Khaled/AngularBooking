@@ -17,6 +17,8 @@ import { OwnerRegisterConfirmedComponent } from './Components/owner-register-con
 import { SendResetPasswordFormComponent } from './Components/send-reset-password-form/send-reset-password-form.component';
 import { ResetPasswordCodeFormComponent } from './Components/reset-password-code-form/reset-password-code-form.component';
 import { NewResetPasswordFormComponent } from './Components/new-reset-password-form/new-reset-password-form.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { UpdateProfileComponent } from './Components/update-profile/update-profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,4 +40,6 @@ export const routes: Routes = [
   { path: 'sendreset', component: SendResetPasswordFormComponent },
   { path: 'resetcode', component: ResetPasswordCodeFormComponent },
   { path: 'resetpassword', component: NewResetPasswordFormComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'updateprofile', component: UpdateProfileComponent },
 ];

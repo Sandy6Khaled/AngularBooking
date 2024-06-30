@@ -23,7 +23,7 @@
             <a *ngIf="!isLoggedIn()" routerLink="login" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
             
             <!-- Display the user's name if logged in -->
-            <div *ngIf="isLoggedIn()" class="nav-item nav-link me-2">{{ getUserName() }}</div>
+            <div *ngIf="isLoggedIn()" routerLink="profile" class="nav-item nav-link me-2">{{ getUserName() }}</div>
             <a *ngIf="isLoggedIn()" routerLink="Home" class="btn btn-primary rounded-pill py-2 px-4" (click)="LogoutAndRedirect()">logout</a>
 
         </div>
