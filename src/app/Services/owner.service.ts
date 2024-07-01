@@ -17,4 +17,7 @@ export class OwnerService {
   addNewHotel(hotel:FormData):Observable<any>{
     return this.http.post(`${this.DB_url}`,hotel,{observe:'response',responseType:'text'}).pipe()
   }
+  deleteRoom(roomId:number){
+    return this.http.delete(`${this.DB_url}/${roomId}`,{observe:'response',responseType:'text'});
+  }
 }

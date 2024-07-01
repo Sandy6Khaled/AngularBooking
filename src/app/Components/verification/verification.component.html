@@ -1,0 +1,57 @@
+<div class="row flex-grow">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card card-rounded">
+      <div class="card-body">
+        <div class="d-sm-flex justify-content-between align-items-start">
+          <div>
+            <h4 class="card-title card-title-dash">Verifications</h4>
+          </div>
+          <!-- <div>
+            <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button">
+              <i class="mdi mdi-account-plus"></i>Add new Verification
+            </button>
+          </div> -->
+        </div>
+        <div class="table-responsive mt-1">
+          <div *ngIf="ApproveMessage" class="response-message alert alert-success">
+            {{ ApproveMessage }}
+          </div>
+          <div *ngIf="DeclineMessage" class="response-message alert alert-success">
+            {{ DeclineMessage }}
+          </div>
+          <table class="table select-table text-center">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Certificate</th>
+                <th>Phone Number</th>
+                <th>Approve</th>
+                <th>Decline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let verification of verifications">
+                <td>{{verification.id}}</td>
+                <td>{{verification.userId}}</td>
+                <td>{{verification.name}}</td>
+                <td>{{verification.email}}</td>
+                <td class="image"><img [src]="verification.certificate" class="w-100 h-100" /></td>
+                <td>{{verification.phoneNumber}}</td>
+                <td>
+                  <button class="btn btn-success btn-sm" (click)="approve(verification.id)">Approve</button>
+
+                </td>
+                <td>
+                  <button class="btn btn-danger btn-sm" (click)="decline(verification.id)">Approve</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
