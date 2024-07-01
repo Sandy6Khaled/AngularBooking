@@ -7,12 +7,13 @@ import { HotelReviewComponent } from '../hotel-review/hotel-review.component';
 import { ComplainsComponent } from '../complains/complains.component';
 import { TokenService } from '../../Services/token.service';
 import { OwnerComplainsComponent } from '../owner-complains/owner-complains.component';
+import { OwnerService } from '../../Services/owner.service';
 
 @Component({
   selector: 'app-hotel-details',
   standalone: true,
   imports: [CommonModule, HttpClientModule,RouterModule,HotelReviewComponent,ComplainsComponent,OwnerComplainsComponent],
-  providers: [HotelsService,TokenService],
+  providers: [HotelsService,TokenService,OwnerService],
   templateUrl: './hotel-details.component.html',
   styleUrls: ['./hotel-details.component.css']
 })
@@ -49,7 +50,7 @@ export class HotelDetailsComponent implements AfterViewInit, OnInit {
   averageRating: number = 0;
   ratingText: string = '';
   role:any;
-  constructor(private route: ActivatedRoute, private hotelsService: HotelsService,private token:TokenService) { }
+  constructor(private route: ActivatedRoute, private hotelsService: HotelsService,private token:TokenService,private ownerService:OwnerService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -113,5 +114,16 @@ export class HotelDetailsComponent implements AfterViewInit, OnInit {
     if (rating >= 6) return 'Good';
     if (rating >= 4) return 'Fair';
     return 'Poor';
+  }
+  DeleteRoom(roomId:number){
+    this.ownerService.deleteRoom(roomId).subscribe({
+      next: (response) => {
+        console.log("Room Delete Respone",response);
+        this.loadHotelDetails(this.hotelId);
+      },
+      error: (err) => {
+        console.error('Error loading hotel details', err);
+      }
+    })
   }
 }
