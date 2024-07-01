@@ -46,7 +46,7 @@
                                     </div>
                                 </td> -->
                                 <td>
-                                    <div  class="d-flex images" *ngIf="hotel.images" >
+                                    <div  class="d-flex images" *ngIf="hotel.images" [routerLink]="['./details',hotel.id]">
                                         <img [src]="hotel.images[0].source" alt="{{hotel.name}}">
                                         <div>
                                             <h6 class="ms-2">{{hotel.name}}</h6>

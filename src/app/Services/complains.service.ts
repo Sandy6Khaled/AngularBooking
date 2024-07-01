@@ -25,7 +25,7 @@ export class ComplainsService {
   GetAllComplainsByHotelId(hotelId: number): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.token.getAccessToken()}`, // Replace with your actual token
+      'Authorization': `Bearer ${this.token.getAccessToken()}`, // Replace with your actual token
     });
     return this.http.get<any>(`${this.DB_url}/hotel/${hotelId}`, { headers });
   }

@@ -1,121 +1,3 @@
-// import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-// import { image } from '../../Models/Images';
-// import { CommonModule } from '@angular/common';
-// import { HttpClientModule } from '@angular/common/http';
-// import { HotelsService } from '../../Services/hotels.service';
-// import { ActivatedRoute } from '@angular/router';
-// import { Hotel } from '../../Models/Hotels';
-
-// @Component({
-//   selector: 'app-hotel-details',
-//   standalone: true,
-//   imports: [CommonModule,HttpClientModule],
-//   providers:[HotelsService],
-//   templateUrl: './hotel-details.component.html',
-//   styleUrl: './hotel-details.component.css'
-// })
-// export class HotelDetailsComponent implements AfterViewInit,OnInit {
-//   hotelId: number = 0;
-//   hotelDetails:any =
-//   {
-//     id: 0,
-//     name: '',
-//     description: '',
-//     numberOfStars: 0,
-//     address: {
-//       city: '',
-//       street: '',
-//       postalCode: ''
-//     },
-//     isDeleted: false,
-//     ownerId: 1,
-//     owner: {
-//       id: 1,
-//       user: null,
-//       offers: [],
-//       restaurants: [],
-//       isDeleted: false
-//     },
-//     wishLists: [],
-//     reviews: [],
-//     offers: [],
-//     rooms: [],
-//     complains: [],
-//     images: []
-//   }
-//   slides:any[]=[];
-
-//   constructor(private route: ActivatedRoute, private hotelsService: HotelsService){}
-//   ngOnInit(): void {
-//     this.route.params.subscribe(params => {
-//       this.hotelId = +params['Id'];  // Retrieve the hotel ID from the URL
-//       this.loadHotelDetails(this.hotelId);
-//     });
-//   }
-  
-//   ngAfterViewInit(): void {
-//     this.initBootstrapCarousel();
-//   }
-
-  
-//   // private initOwlCarousel() {
-//   //   const $ = (window as any).$;
-//   //   if ($('.testimonial-carousel').length) {
-//   //     $('.testimonial-carousel').owlCarousel('destroy');
-//   //     $('.testimonial-carousel').owlCarousel({
-//   //       autoplay: true,
-//   //       smartSpeed: 1000,
-//   //       center: true,
-//   //       margin: 24,
-//   //       dots: true,
-//   //       loop: true,
-//   //       nav: false,
-//   //       responsive: {
-//   //         0: {
-//   //           items: 1
-//   //         },
-//   //         768: {
-//   //           items: 2
-//   //         },
-//   //         992: {
-//   //           items: 3
-//   //         }
-//   //       }
-//   //     });
-//   //   }
-//   // }
-//   private initBootstrapCarousel() {
-//     // Ensure jQuery is available
-//     const $ = (window as any).$;
-//     // Initialize the carousel
-//     $('#carouselExampleControls').carousel();
-//   }
-//   onPrevClick(event: Event) {
-//     event.preventDefault();
-//     // $('#carouselExampleControls').carousel('prev');
-//   }
-
-//   onNextClick(event: Event) {
-//     event.preventDefault();
-//     // $('#carouselExampleControls').carousel('next');
-//   }
-
-//   loadHotelDetails(Id: number) {
-//     this.hotelsService.getById(Id).subscribe({
-//       next: (response) => {
-//         this.hotelDetails = response;
-//         this.slides = response.images.map((img) => ({
-//           image: img.source
-//         }));
-//         // this.slides=response.images;
-//         console.log(this.hotelDetails);
-//       },
-//       error: (err) => {
-//         console.error('Error loading hotel details', err);
-//       }
-//     });
-//   }
-// }
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -123,12 +5,14 @@ import { HotelsService } from '../../Services/hotels.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HotelReviewComponent } from '../hotel-review/hotel-review.component';
 import { ComplainsComponent } from '../complains/complains.component';
+import { TokenService } from '../../Services/token.service';
+import { OwnerComplainsComponent } from '../owner-complains/owner-complains.component';
 
 @Component({
   selector: 'app-hotel-details',
   standalone: true,
-  imports: [CommonModule, HttpClientModule,RouterModule,HotelReviewComponent,ComplainsComponent],
-  providers: [HotelsService],
+  imports: [CommonModule, HttpClientModule,RouterModule,HotelReviewComponent,ComplainsComponent,OwnerComplainsComponent],
+  providers: [HotelsService,TokenService],
   templateUrl: './hotel-details.component.html',
   styleUrls: ['./hotel-details.component.css']
 })
@@ -164,8 +48,8 @@ export class HotelDetailsComponent implements AfterViewInit, OnInit {
   starArray: any[] = [];
   averageRating: number = 0;
   ratingText: string = '';
-
-  constructor(private route: ActivatedRoute, private hotelsService: HotelsService) { }
+  role:any;
+  constructor(private route: ActivatedRoute, private hotelsService: HotelsService,private token:TokenService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -174,6 +58,7 @@ export class HotelDetailsComponent implements AfterViewInit, OnInit {
       console.log("Hotel Details Id",this.hotelId);
       
     });
+    this.role = this.token.getRole();
   }
 
   ngAfterViewInit(): void {
