@@ -17,4 +17,5 @@ export class RoomService {
   getRoomCount(hotelId:number):Observable<any>{
     return this.http.get<number>(`${this.DB_url}/${hotelId}`,{observe:'response'});
   }
+  
 }
