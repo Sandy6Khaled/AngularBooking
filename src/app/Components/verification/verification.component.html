@@ -1,5 +1,5 @@
 <div class="row flex-grow">
-  <div class="col-12 grid-margin stretch-card">
+  <div class="col-12 grid-margin stretch-card" *ngIf="verifications.length > 0">
     <div class="card card-rounded">
       <div class="card-body">
         <div class="d-sm-flex justify-content-between align-items-start">
@@ -12,13 +12,14 @@
             </button>
           </div> -->
         </div>
+        <div *ngIf="ApproveMessage" class="response-message alert alert-success">
+          {{ ApproveMessage }}
+        </div>
+        <div *ngIf="DeclineMessage" class="response-message alert alert-success">
+          {{ DeclineMessage }}
+        </div>
         <div class="table-responsive mt-1">
-          <div *ngIf="ApproveMessage" class="response-message alert alert-success">
-            {{ ApproveMessage }}
-          </div>
-          <div *ngIf="DeclineMessage" class="response-message alert alert-success">
-            {{ DeclineMessage }}
-          </div>
+          
           <table class="table select-table text-center">
             <thead>
               <tr>
@@ -45,7 +46,7 @@
 
                 </td>
                 <td>
-                  <button class="btn btn-danger btn-sm" (click)="decline(verification.id)">Approve</button>
+                  <button class="btn btn-danger btn-sm" (click)="decline(verification.id)">Decline</button>
                 </td>
               </tr>
             </tbody>
@@ -54,4 +55,10 @@
       </div>
     </div>
   </div>
+  <div class="col-12 grid-margin stretch-card" *ngIf="verifications.length == 0">
+    <div  class="response-message alert alert-success">
+      No Owners To Verify
+    </div>
+  </div>
+
 </div>

@@ -7,22 +7,25 @@ import { TokenService } from '../../Services/token.service';
 import { WishlistService } from '../../Services/wishlist.service';
 import { addedAndDeletedWishList } from '../../Models/addedAndDeletedWishList';
 import { RoomService } from '../../Services/room.service';
+import { forkJoin, map } from 'rxjs';
+import { Hotel } from '../../Models/Hotels';
 
 @Component({
   selector: 'app-package-home',
   standalone: true,
   imports: [CommonModule, HttpClientModule, RouterModule],
-  providers: [HotelsService, TokenService, WishlistService,RoomService],
+  providers: [HotelsService, TokenService, WishlistService, RoomService],
   templateUrl: './package-home.component.html',
   styleUrl: './package-home.component.css',
 })
 export class PackageHomeComponent implements OnInit {
-  results: any;
+  // results: any;
   errorMessage: string = '';
   addedWishList: any = {
     hotelId: 0,
     userId: 0,
   };
+  results: Hotel[] = [];
   roomCounts: { [hotelId: number]: number } = {};
 
   constructor(
@@ -33,15 +36,17 @@ export class PackageHomeComponent implements OnInit {
     private roomService: RoomService
   ) {}
   ngOnInit(): void {
-    this.getall();
+    this.getHotelsWithRooms();
   }
   getall() {
     this.HotelService.getallHotels().subscribe({
       next: (data) => {
         this.results = data.body;
-        console.log(this.results);
-        this.results.forEach((h:any) => {
-          this.getNumberofRooms(h.id);
+        console.log('Hotels Result without filtering', this.results);
+
+        // Get room counts for each hotel
+        this.results.forEach((hotel: any) => {
+          this.getNumberofRooms(hotel.id);
         });
       },
       error: (err) => {
@@ -76,6 +81,8 @@ export class PackageHomeComponent implements OnInit {
       });
     } else {
       console.error('User ID not found in token');
+      this.errorMessage = 'Please Login first';
+      this.Login();
     }
   }
   getNumberofRooms(hotelId: number) {
@@ -84,10 +91,58 @@ export class PackageHomeComponent implements OnInit {
         // this.roomNum = data.body;
         this.roomCounts[hotelId] = data.body;
         console.log('Room Count', this.roomCounts);
+
+        // Filter hotels based on room counts
+        this.results = this.results.filter((hotel: any) => this.roomCounts[hotel.id] > 0);
+        console.log('Filtered Hotels Result', this.results);
       },
       error: (err) => {
         console.log('Error on getting Room Number', err);
       },
     });
+  }
+  getHotelsWithRooms(): void {
+    this.HotelService.getallHotels().subscribe({
+      next: (response) => {
+        const hotels = response.body;
+        if (Array.isArray(hotels)) {
+          const roomCountObservables = hotels.map((hotel) =>
+            this.roomService.getRoomCount(hotel.id).pipe(
+              map((roomCount:any) => ({
+                hotel,
+                roomCount: roomCount.body,
+              }))
+            )
+          );
+
+          forkJoin(roomCountObservables).subscribe({
+            next: (results) => {
+              this.results = results
+                .filter((result) => result.roomCount > 0)
+                .map((result) => result.hotel);
+              console.log('Filtered Hotels Result', this.results);
+            },
+            error: (err) => {
+              console.error('Error fetching room counts:', err);
+            },
+          });
+        } else {
+          console.error('Expected an array of hotels but received:', hotels);
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching hotels:', error);
+      },
+    });
+  }
+  Login(){
+    this.router.navigate(['login']);
+  }
+  navigateToDetails(hotelId: number) {
+    if (this.tokenService.getAccessToken()) {
+      this.router.navigate(['/details', hotelId]);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

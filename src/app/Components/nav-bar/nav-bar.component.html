@@ -12,19 +12,61 @@
                 <a routerLink="home" class="nav-item nav-link active">Home</a>
                 <a href="about.html" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="package.html" class="nav-item nav-link">Packages</a>
+                <a routerLink="packages" class="nav-item nav-link">Packages</a>
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
                 <a class="nav-item nav-link" routerLink="wishlist" *ngIf="getUserRole() =='[&quot;User&quot;]'"><i class="fa-solid fa-heart"></i></a>
             </div>
             
             <!-- <a routerLink="register" class="btn btn-primary rounded-pill py-2 px-4 me-2">Register</a>
             <a routerLink="login" class="btn btn-primary rounded-pill py-2 px-4">Login</a> -->
-            <a *ngIf="!isLoggedIn()" routerLink="register" class="btn btn-primary rounded-pill py-2 px-4 me-2">Register</a>
-            <a *ngIf="!isLoggedIn()" routerLink="login" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+            <ng-container *ngIf="!isLoggedIn(); else loggedInNavbar">
+                <a routerLink="register" class="btn btn-primary rounded-pill py-2 px-4 me-2">Register</a>
+                <a routerLink="login" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+            </ng-container>
+
+            <!-- User profile and logout options -->
+            <ng-template #loggedInNavbar>
+                <div *ngIf="image !== null" routerLink="profile" class="nav-item nav-link me-2 form-icon overflow-hidden">
+                    <img class="w-100 h-100" [src]="image" alt="User Image">
+                </div>
+                <div *ngIf="image == null" routerLink="profile" class="nav-item nav-link me-2">
+                    <p>{{ getUserName() }}</p>
+                </div>
+                <a routerLink="Home" class="btn btn-primary rounded-pill py-2 px-4" (click)="LogoutAndRedirect()">Logout</a>
+            </ng-template>
             
             <!-- Display the user's name if logged in -->
-            <div *ngIf="isLoggedIn()" routerLink="profile" class="nav-item nav-link me-2">{{ getUserName() }}</div>
-            <a *ngIf="isLoggedIn()" routerLink="Home" class="btn btn-primary rounded-pill py-2 px-4" (click)="LogoutAndRedirect()">logout</a>
+            <!-- <div *ngIf="isLoggedIn() && image; else showUserName " routerLink="profile" class="nav-item nav-link me-2 form-icon overflow-hidden">
+                <img class="w-100 h-100" [src]="image" alt="">
+            </div> -->
+            <!-- <div *ngIf="isLoggedIn() && image == null " routerLink="profile" class="nav-item nav-link me-2">
+                <p>{{getUserName()}}</p>
+
+            </div> -->
+            <!-- <ng-template #showUserName>
+                <div routerLink="profile">
+                    <p>{{getUserName()}}</p>
+                </div>
+            </ng-template> -->
+
+            <!-- <ng-container *ngIf="isLoggedIn(); else showLogin">
+                <div *ngIf="image !== null && image.trim() !== '' && image != null; else showUserName" routerLink="profile" class="nav-item nav-link me-2 form-icon overflow-hidden">
+                    <img class="w-100 h-100" [src]="image" alt="">
+                </div>
+            </ng-container>
+
+            <ng-template #showUserName>
+                <div routerLink="profile" class="nav-item nav-link me-2">
+                    <p>{{ getUserName() }}</p>
+                </div>
+            </ng-template>
+
+            <ng-template #showLogin>
+                <a routerLink="register" class="btn btn-primary rounded-pill py-2 px-4 me-2">Register</a>
+                <a routerLink="login" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+            </ng-template> -->
+
+            <!-- <a *ngIf="isLoggedIn()" routerLink="Home" class="btn btn-primary rounded-pill py-2 px-4" (click)="LogoutAndRedirect()">logout</a> -->
 
         </div>
     </nav>

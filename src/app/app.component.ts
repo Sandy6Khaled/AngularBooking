@@ -7,6 +7,7 @@ import { AdminDashboardComponent } from './Components/admin-dashboard/admin-dash
 import { FooterComponent } from './Components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { OwnerDashboardComponent } from './Components/owner-dashboard/owner-dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
@@ -18,7 +19,8 @@ import { OwnerDashboardComponent } from './Components/owner-dashboard/owner-dash
     NavBarComponent,
     RegisterComponent,
     FooterComponent,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

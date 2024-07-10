@@ -51,6 +51,7 @@ export class VerificationComponent implements OnInit{
       error: (err) => {
         console.log("Error in Approve",err);
         this.ApproveErrorMessage=err.body;
+        this.GetUnVerifiedUsers();
       }
     })
   }
@@ -64,6 +65,7 @@ export class VerificationComponent implements OnInit{
       error: (err) => {
         console.log("Error in Decline",err.body);
         this.DeclineErrorMessage=err.body;
+        this.GetUnVerifiedUsers();
       }
     })
   }

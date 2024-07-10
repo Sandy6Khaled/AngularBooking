@@ -128,6 +128,7 @@ export class AddHotelFormComponent {
     imagesSource: [], // Initialize as empty array for multiple files
   };
   formData = new FormData();
+  hotelResponse:any;
   constructor(
     private fb: FormBuilder,
     private ownerService: OwnerService,
@@ -162,6 +163,7 @@ export class AddHotelFormComponent {
     this.ownerService.addNewHotel(this.formData).subscribe({
       next: (res) => {
         console.log('Hotel added', res.body);
+        this.hotelResponse = res.body;
       },
       error: (err) => {
         console.log('Error in Added Hotel Form', err);

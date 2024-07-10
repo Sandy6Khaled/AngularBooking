@@ -4,20 +4,22 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HotelsService } from '../../Services/hotels.service';
 import { Hotel } from '../../Models/Hotels';
 import { TrendinHotelsService } from '../../Services/trendin-hotels.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { TokenService } from '../../Services/token.service';
+import { NavbarAuthService } from '../../Services/navbar-auth.service';
 
 @Component({
   selector: 'app-popular-destination',
   standalone: true,
   imports: [HttpClientModule, CommonModule,RouterModule],
-  providers: [TrendinHotelsService],
+  providers: [TrendinHotelsService,TokenService],
   templateUrl: './popular-destination.component.html',
   styleUrl: './popular-destination.component.css',
 })
 export class PopularDestinationComponent implements OnInit {
   hotels: any;
   // @Output() HotelId: EventEmitter<number> = new EventEmitter<number>();
-  constructor(public hotelsService: TrendinHotelsService) {}
+  constructor(public hotelsService: TrendinHotelsService,private tokenService:TokenService,private router:Router) {}
   ngOnInit(): void {
     this.gettrendingHotels();
   }
@@ -32,7 +34,11 @@ export class PopularDestinationComponent implements OnInit {
       },
     });
   }
-  // sendingId(id: number){
-  //   this.HotelId.emit(id);
-  // }
+  navigateToDetails(hotelId: number) {
+    if (this.tokenService.getAccessToken()) {
+      this.router.navigate(['/details', hotelId]);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
 }

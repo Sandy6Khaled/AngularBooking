@@ -19,6 +19,8 @@ import { ResetPasswordCodeFormComponent } from './Components/reset-password-code
 import { NewResetPasswordFormComponent } from './Components/new-reset-password-form/new-reset-password-form.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { UpdateProfileComponent } from './Components/update-profile/update-profile.component';
+import { PackagesComponent } from './Components/packages/packages.component';
+import { PackageHomeComponent } from './Components/package-home/package-home.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,4 +44,5 @@ export const routes: Routes = [
   { path: 'resetpassword', component: NewResetPasswordFormComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'updateprofile', component: UpdateProfileComponent },
+  { path: 'packages', component: PackageHomeComponent },
 ];

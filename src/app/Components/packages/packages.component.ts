@@ -5,13 +5,14 @@ import { OffersService } from '../../Services/offers.service';
 import { Offer } from '../../Models/Offers';
 import { HotelsService } from '../../Services/hotels.service';
 import { Hotel } from '../../Models/Hotels';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { TokenService } from '../../Services/token.service';
 
 @Component({
   selector: 'app-packages',
   standalone: true,
   imports: [CommonModule,HttpClientModule,RouterModule],
-  providers:[OffersService,HotelsService],
+  providers:[OffersService,HotelsService,TokenService],
   templateUrl: './packages.component.html',
   styleUrl: './packages.component.css'
 })
@@ -19,7 +20,7 @@ export class PackagesComponent implements OnInit{
   offers: Offer[] = [];
   // hotel:any;
   hotels: { [key: number]: Hotel } = {}; // Map of hotelId to Hotel object
-  constructor(private offersService: OffersService , private hotelService:HotelsService) { }
+  constructor(private offersService: OffersService , private hotelService:HotelsService,private tokenService:TokenService,private router:Router) { }
 
   ngOnInit(): void {
     this.fetchOffers();
@@ -54,5 +55,12 @@ export class PackagesComponent implements OnInit{
         
       }
     })
+  }
+  navigateToDetails(hotelId: number) {
+    if (this.tokenService.getAccessToken()) {
+      this.router.navigate(['/details', hotelId]);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

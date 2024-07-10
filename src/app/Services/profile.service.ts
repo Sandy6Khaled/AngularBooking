@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-
+  static IsUpdated:boolean=false;
   constructor(private readonly http:HttpClient) { }
   private readonly DB_url = 'https://localhost:7182/api/ClientProfile';
   GetClientData(userId:number):Observable<any>{
@@ -15,9 +15,13 @@ export class ProfileService {
       params: { userId: userId.toString() }});
   }
   UpdateProfile(updatedProfile:FormData){
+    ProfileService.IsUpdated = true;
     return this.http.put(`${this.DB_url}/UpdateProfile`,updatedProfile,{observe:'response',responseType:'text'});
   }
   DeleteProfile(userId:number){
-    return this.http.delete(`${this.DB_url}/DeleteProfile/${userId}`,{observe:'response'});
+    return this.http.delete(`${this.DB_url}/DeleteProfile/`,{observe:'response',params:{userId:userId.toString()},responseType:'text'});
+  }
+  static IsProfileUpdated(){
+    return ProfileService.IsUpdated;
   }
 }

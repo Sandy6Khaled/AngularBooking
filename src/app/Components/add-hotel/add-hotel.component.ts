@@ -21,6 +21,7 @@ export class AddHotelComponent implements OnInit {
   userId: number = 0;
   // roomNum: any;
   roomCounts: { [hotelId: number]: number } = {};
+  NoHotelMessage:any;
   // roomCounts: { [hotelId: number]: Observable<number> } = {};
   constructor(
     private readonly ownerService: OwnerService,
@@ -38,11 +39,16 @@ export class AddHotelComponent implements OnInit {
     this.userId = +this.token.getUserId();
     this.ownerService.getHotelsByOwnerId(this.userId).subscribe({
       next: (res) => {
-        this.hotels = res.body;
-        console.log('Hotels for Owner', res);
-        this.hotels.forEach((h) => {
-          this.getNumberofRooms(h.id);
-        });
+        if(res.body.length > 0){
+          this.hotels = res.body;
+          console.log('Hotels for Owner', res);
+          this.hotels.forEach((h) => {
+            this.getNumberofRooms(h.id);
+          });
+        }else{
+          this.NoHotelMessage = "You don't have any hotels yet, please add one";
+        }
+        
       },
       error: (err) => {
         console.log('Error in Getting Hotels for Owner In Add Hotel', err);

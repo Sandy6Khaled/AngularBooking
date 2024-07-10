@@ -14,7 +14,10 @@
                             Hotel</button>
                     </div>
                 </div>
-                <div class="table-responsive  mt-1">
+                <div *ngIf="NoHotelMessage" class="response-message alert alert-danger">
+                    {{ NoHotelMessage }}
+                  </div>
+                <div class="table-responsive  mt-1" *ngIf="!NoHotelMessage">
                     <table class="table select-table text-center">
                         <thead>
                             <tr>
@@ -46,7 +49,7 @@
                                     </div>
                                 </td> -->
                                 <td>
-                                    <div  class="d-flex images" *ngIf="hotel.images" [routerLink]="['./details',hotel.id]">
+                                    <div  class="d-flex images" *ngIf="hotel.images" [routerLink]="['../details',hotel.id]">
                                         <img [src]="hotel.images[0].source" alt="{{hotel.name}}">
                                         <div>
                                             <h6 class="ms-2">{{hotel.name}}</h6>

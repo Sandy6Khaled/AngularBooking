@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
+import { ProfileService } from './profile.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NavbarAuthService {
 
-  constructor(public token:TokenService) { }
+  constructor(public token:TokenService,private profile:ProfileService) { }
   isLoggedIn(): boolean {
     const token = this.token.getAccessToken();
     return !!token;
@@ -26,5 +27,8 @@ export class NavbarAuthService {
   }
   Logout(){
     this.token.clearTokens();
+  }
+  static IsProfileUpdated(){
+    return ProfileService.IsProfileUpdated();
   }
 }
